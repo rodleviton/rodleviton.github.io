@@ -1,0 +1,51 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-a54b4f32bdc1ef890ddd.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/Sy2-PojiT6G9t8XobjaQq/_buildManifest.js",
+    "static/Sy2-PojiT6G9t8XobjaQq/_ssgManifest.js"
+  ],
+  "pages": {
+    "/": [
+      "static/chunks/webpack-ddd010a953737b6e3536.js",
+      "static/chunks/framework-2191d16384373197bc0a.js",
+      "static/chunks/main-4809d8b3f3ef3c100198.js",
+      "static/chunks/310-ee87df32a1396c167cd7.js",
+      "static/chunks/750-d995a0b74c94966e60d4.js",
+      "static/chunks/pages/index-dea1040d7779bbb599d6.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-ddd010a953737b6e3536.js",
+      "static/chunks/framework-2191d16384373197bc0a.js",
+      "static/chunks/main-4809d8b3f3ef3c100198.js",
+      "static/css/fdaaec18c9aaa5b4ab4c.css",
+      "static/chunks/pages/_app-4539c9b8de53f7d0acd1.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-ddd010a953737b6e3536.js",
+      "static/chunks/framework-2191d16384373197bc0a.js",
+      "static/chunks/main-4809d8b3f3ef3c100198.js",
+      "static/chunks/pages/_error-737a04e9a0da63c9d162.js"
+    ],
+    "/pixels/oberhauser-calendar": [
+      "static/chunks/webpack-ddd010a953737b6e3536.js",
+      "static/chunks/framework-2191d16384373197bc0a.js",
+      "static/chunks/main-4809d8b3f3ef3c100198.js",
+      "static/chunks/310-ee87df32a1396c167cd7.js",
+      "static/chunks/750-d995a0b74c94966e60d4.js",
+      "static/chunks/pages/pixels/oberhauser-calendar-fc6437dd86e62e4a5c86.js"
+    ],
+    "/pixels/vue-card-stack": [
+      "static/chunks/webpack-ddd010a953737b6e3536.js",
+      "static/chunks/framework-2191d16384373197bc0a.js",
+      "static/chunks/main-4809d8b3f3ef3c100198.js",
+      "static/chunks/310-ee87df32a1396c167cd7.js",
+      "static/chunks/750-d995a0b74c94966e60d4.js",
+      "static/chunks/pages/pixels/vue-card-stack-f5d83a02e3b2b878b6bc.js"
+    ]
+  },
+  "ampFirstPages": []
+}
