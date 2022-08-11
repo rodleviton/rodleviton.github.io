@@ -8,6 +8,7 @@ on:
 env:
   PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
 
+jobs:
   e2e:
     name: E2E Test
     timeout-minutes: 60
