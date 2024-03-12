@@ -1,28 +1,29 @@
-import Head from 'next/head'
-import styled from '@emotion/styled'
-import css from '@styled-system/css'
 import { useCallback, useEffect, useState } from 'react'
-import Flex from '../../components/primitives/Flex'
-import Box from '../../components/primitives/Box'
+
 import Anchor from '../../components/elements/Anchor'
-import Stack from '../../components/elements/Stack'
-import Heading from '../../components/elements/Heading'
-import Image from 'next/image'
-import Type from '../../components/elements/Type'
-import ChevronUpIcon from '../../components/icons/ChevronUpIcon'
-import ChevronDownIcon from '../../components/icons/ChevronDownIcon'
-import ChevronLeftIcon from '../../components/icons/ChevronLeftIcon'
-import Grid from '../../components/primitives/Grid'
+import Box from '../../components/primitives/Box'
 import Button from '../../components/elements/Button'
 import ButtonPrimitive from '../../components/primitives/Button'
-import Link from 'next/link'
-import IconButton from '../../components/elements/IconButton'
+import ChevronDownIcon from '../../components/icons/ChevronDownIcon'
+import ChevronLeftIcon from '../../components/icons/ChevronLeftIcon'
+import ChevronUpIcon from '../../components/icons/ChevronUpIcon'
+import Flex from '../../components/primitives/Flex'
 import GitHubIcon from '../../components/icons/GitHubIcon'
+import Grid from '../../components/primitives/Grid'
+import Head from 'next/head'
+import Heading from '../../components/elements/Heading'
+import IconButton from '../../components/elements/IconButton'
+import Image from 'next/image'
+import Link from 'next/link'
+import Stack from '../../components/elements/Stack'
+import Type from '../../components/elements/Type'
 import VueIcon from '../../components/icons/VueIcon'
-import { useUISettingsContext } from '../../hooks/useUISettingsContext'
 import calendar2012 from '../../assets/oberhauser_calendar_2012.png'
 import calendar2013 from '../../assets/oberhauser_calendar_2013.png'
 import calendar2015 from '../../assets/oberhauser_calendar_2015.png'
+import css from '@styled-system/css'
+import styled from '@emotion/styled'
+import { useUISettingsContext } from '../../hooks/useUISettingsContext'
 
 const panel = {
   open: 'translate3d(0, 0, 0)',
@@ -67,7 +68,7 @@ export default function OberhauserCalendar() {
   return (
     <>
       <Head>
-        <title>Rod Levtion - Oberhauser Calendar</title>
+        <title>Rod Leviton - Oberhauser Calendar</title>
         <meta name="description" content="Oberhauser Calendar by Rod Leviton" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

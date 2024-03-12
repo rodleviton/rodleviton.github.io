@@ -1,24 +1,25 @@
-import Head from 'next/head'
-import styled from '@emotion/styled'
-import css from '@styled-system/css'
 import { useCallback, useEffect, useState } from 'react'
-import Flex from '../../components/primitives/Flex'
+
 import Box from '../../components/primitives/Box'
-import Stack from '../../components/elements/Stack'
-import Heading from '../../components/elements/Heading'
-import Image from 'next/image'
-import Type from '../../components/elements/Type'
-import ChevronUpIcon from '../../components/icons/ChevronUpIcon'
-import ChevronDownIcon from '../../components/icons/ChevronDownIcon'
-import ChevronLeftIcon from '../../components/icons/ChevronLeftIcon'
-import Grid from '../../components/primitives/Grid'
 import Button from '../../components/elements/Button'
 import ButtonPrimitive from '../../components/primitives/Button'
-import Link from 'next/link'
-import IconButton from '../../components/elements/IconButton'
+import ChevronDownIcon from '../../components/icons/ChevronDownIcon'
+import ChevronLeftIcon from '../../components/icons/ChevronLeftIcon'
+import ChevronUpIcon from '../../components/icons/ChevronUpIcon'
+import Flex from '../../components/primitives/Flex'
 import GitHubIcon from '../../components/icons/GitHubIcon'
-import VueIcon from '../../components/icons/VueIcon'
+import Grid from '../../components/primitives/Grid'
+import Head from 'next/head'
+import Heading from '../../components/elements/Heading'
+import IconButton from '../../components/elements/IconButton'
+import Image from 'next/image'
+import Link from 'next/link'
+import Stack from '../../components/elements/Stack'
 import SwipeIcon from '../../components/icons/SwipeIcon'
+import Type from '../../components/elements/Type'
+import VueIcon from '../../components/icons/VueIcon'
+import css from '@styled-system/css'
+import styled from '@emotion/styled'
 import { useUISettingsContext } from '../../hooks/useUISettingsContext'
 
 const panel = {
@@ -76,7 +77,7 @@ export default function VueCardStack() {
   return (
     <>
       <Head>
-        <title>Rod Levtion - Vue Card Stack</title>
+        <title>Rod Leviton - Vue Card Stack</title>
         <meta name="description" content="Vue Card Stack by Rod Leviton" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
