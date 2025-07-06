@@ -15,7 +15,7 @@ export function TechStackGrid({ technologies }: TechStackGridProps) {
   return (
     <div className="flex gap-8">
       <div className="w-34 min-w-34"></div>
-      <div className="flex gap-4.5">
+      <div className="flex gap-4">
         {technologies.map((tech, index) => (
           <TechIcon
             key={index}

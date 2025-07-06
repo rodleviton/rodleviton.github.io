@@ -1,8 +1,12 @@
+"use client";
+
 import { SkillDot } from "./skill-dot";
+import { useState } from "react";
+import { useSkillHover } from "@/contexts/skill-hover-context";
 
 interface SkillRatingProps {
   label: string;
-  rating: number; // Out of 10
+  rating: number;
   maxRating?: number;
 }
 
@@ -11,17 +15,43 @@ export function SkillRating({
   rating,
   maxRating = 10,
 }: SkillRatingProps) {
+  const [isHovered, setIsHovered] = useState(false);
+  const { setHoveredSkill } = useSkillHover();
+
+  const handleHoverStart = () => {
+    setIsHovered(true);
+    setHoveredSkill(label);
+  };
+
+  const handleHoverEnd = () => {
+    setIsHovered(false);
+    setHoveredSkill(null);
+  };
+
   return (
-    <div className="flex gap-8">
+    <div
+      className="flex py-2 gap-8 hover:cursor-pointer"
+      onMouseEnter={handleHoverStart}
+      onMouseLeave={handleHoverEnd}
+    >
       <div className="w-34 min-w-34 flex flex-col gap-2">
-        <p className="text-2xs text-end font-heading font-semibold uppercase">
+        <p
+          className={`text-2xs text-end font-heading font-semibold uppercase transition-colors duration-300 ${
+            isHovered ? "text-accent" : "text-foreground"
+          }`}
+        >
           {label}
         </p>
       </div>
       <div className="flex w-full">
         <div className="flex gap-2 items-center">
           {Array.from({ length: maxRating }, (_, index) => (
-            <SkillDot key={index} filled={index < rating} />
+            <SkillDot
+              key={index}
+              filled={index < rating}
+              isHovered={isHovered}
+              delay={index * 0.065}
+            />
           ))}
         </div>
       </div>

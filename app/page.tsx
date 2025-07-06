@@ -13,10 +13,11 @@ import { ProjectEntry } from "@/components/projects/project-entry";
 import { projectsData } from "@/data/projects";
 import { SocialEntry } from "@/components/social/social-entry";
 import { socialData } from "@/data/social";
+import { SkillHoverProvider } from "@/contexts/skill-hover-context";
 
 export default function Home() {
   return (
-    <>
+    <SkillHoverProvider>
       <ProfileHeader
         name={profileData.name}
         title={profileData.title}
@@ -79,6 +80,6 @@ export default function Home() {
           />
         ))}
       </SectionContainer>
-    </>
+    </SkillHoverProvider>
   );
 }

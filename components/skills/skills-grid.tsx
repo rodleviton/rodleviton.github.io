@@ -11,7 +11,7 @@ interface SkillsGridProps {
 
 export function SkillsGrid({ skills }: SkillsGridProps) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       {skills.map((skill, index) => (
         <SkillRating key={index} label={skill.label} rating={skill.rating} />
       ))}

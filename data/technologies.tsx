@@ -1,4 +1,5 @@
 import { Css3Icon } from "@/components/icons/css3";
+import { FigmaIcon } from "@/components/icons/figma";
 import { Html5Icon } from "@/components/icons/html5";
 import { JavascriptIcon } from "@/components/icons/javascript";
 import { NextIcon } from "@/components/icons/next";
@@ -31,6 +32,11 @@ export const technologiesData: Technology[] = [
     href: "https://www.w3.org/Style/CSS/Overview.en.html",
     icon: <Css3Icon />,
     label: "CSS3",
+  },
+  {
+    href: "https://www.figma.com/",
+    icon: <FigmaIcon />,
+    label: "Figma",
   },
   { href: "https://react.dev/", icon: <ReactIcon />, label: "React" },
   {
