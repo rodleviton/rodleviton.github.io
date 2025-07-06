@@ -9,8 +9,10 @@ import { profileData } from "@/data/profile";
 import { skillsData } from "@/data/skills";
 import { technologiesData } from "@/data/technologies";
 import { experienceData } from "@/data/experience";
-import { Github } from "@/components/logos/github";
-import Link from "next/link";
+import { ProjectEntry } from "@/components/projects/project-entry";
+import { projectsData } from "@/data/projects";
+import { SocialEntry } from "@/components/social/social-entry";
+import { socialData } from "@/data/social";
 
 export default function Home() {
   return (
@@ -53,109 +55,29 @@ export default function Home() {
       <SectionContainer>
         <SectionHeader title="Open Source Projects" />
 
-        <div className="flex gap-8">
-          <div className="w-34 min-w-34 flex flex-col gap-2">
-            <p className="text-2xs text-end font-heading font-semibold uppercase">
-              GitHub
-            </p>
-          </div>
-          <div className="flex flex-col gap-6 w-full">
-            <div className="flex items-center gap-3">
-              <Github />
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold font-heading leading-none uppercase">
-                  Recast
-                </h3>
-                <Link
-                  href="https://github.com/reactivepixels/recast"
-                  target="_blank"
-                  className="text-xs text-foreground-muted font-heading leading-none hover:text-accent transition-colors duration-300"
-                >
-                  github.com/reactivepixels/recast
-                </Link>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <p className="text-sm leading-6">
-                Recast is a collection of small React utilities; it is also an
-                approach to building truly reusable component primitives by
-                abstracting the theme layer from the internal workings of a
-                component.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex gap-8">
-          <div className="w-34 min-w-34 flex flex-col gap-2">
-            <p className="text-2xs text-end font-heading font-semibold uppercase">
-              GitHub
-            </p>
-          </div>
-          <div className="flex flex-col gap-6 w-full">
-            <div className="flex items-center gap-3">
-              <Github />
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold font-heading leading-none uppercase">
-                  Vue Card Stack
-                </h3>
-                <Link
-                  href="https://github.com/rodleviton/vue-card-stack"
-                  target="_blank"
-                  className="text-xs text-foreground-muted font-heading leading-none hover:text-accent transition-colors duration-300"
-                >
-                  github.com/rodleviton/vue-card-stack
-                </Link>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <p className="text-sm leading-6">
-                A swipeable card component library built for VueJs. Particular
-                attention has been placed on creating a buttery smooth and
-                performant card swipe interaction and thorough api documentation
-                for consumers.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex gap-8">
-          <div className="w-34 min-w-34 flex flex-col gap-2">
-            <p className="text-2xs text-end font-heading font-semibold uppercase">
-              GitHub
-            </p>
-          </div>
-          <div className="flex flex-col gap-6 w-full">
-            <div className="flex items-center gap-3">
-              <Github />
-              <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold font-heading leading-none uppercase">
-                  Swanky Docs
-                </h3>
-                <Link
-                  href="https://github.com/swanky-docs"
-                  target="_blank"
-                  className="text-xs text-foreground-muted font-heading leading-none hover:text-accent transition-colors duration-300"
-                >
-                  github.com/swanky-docs
-                </Link>
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              <p className="text-sm leading-6">
-                Swanky Docs is a configuration based documentation generator
-                that is optimized for creating pattern libraries.
-              </p>
-            </div>
-          </div>
-        </div>
+        {projectsData.map((project, index) => (
+          <ProjectEntry
+            key={index}
+            platform={project.platform}
+            name={project.name}
+            repository={project.repository}
+            logo={project.logo}
+            description={project.description}
+          />
+        ))}
       </SectionContainer>
 
       <SectionContainer>
         <SectionHeader title="Online Presence" />
+
+        {socialData.map((social, index) => (
+          <SocialEntry
+            key={index}
+            platform={social.platform}
+            profileUrl={social.profileUrl}
+            logo={social.logo}
+          />
+        ))}
       </SectionContainer>
     </>
   );

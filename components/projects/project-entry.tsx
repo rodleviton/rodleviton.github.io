@@ -1,0 +1,30 @@
+import { ReactNode } from "react";
+import { ProjectDetails } from "./project-details";
+import { ProjectHeader } from "./project-header";
+import { ProjectDescription } from "./project-description";
+
+interface ProjectEntryProps {
+  platform: string;
+  name: string;
+  repository: string;
+  logo?: ReactNode;
+  description: string;
+}
+
+export function ProjectEntry({
+  platform,
+  name,
+  repository,
+  logo,
+  description,
+}: ProjectEntryProps) {
+  return (
+    <div className="flex gap-8">
+      <ProjectDetails platform={platform} />
+      <div className="flex flex-col gap-6 w-full">
+        <ProjectHeader logo={logo} name={name} repository={repository} />
+        <ProjectDescription description={description} />
+      </div>
+    </div>
+  );
+}

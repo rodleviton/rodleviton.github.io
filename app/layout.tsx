@@ -13,10 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`dark debug-grid debug-gaps ${sans.variable} ${heading.variable}`}
-    >
+    <html lang="en" className={`dark ${sans.variable} ${heading.variable}`}>
       <body className="flex min-h-screen flex-col">
         <main className="flex-1">{children}</main>
       </body>

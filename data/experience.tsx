@@ -1,5 +1,7 @@
 import { Bookwell } from "@/components/logos/bookwell";
 import { CultureAmp } from "@/components/logos/culture-amp";
+import { HorizonState } from "@/components/logos/horizon-state";
+import { Mogul } from "@/components/logos/mogul";
 import { OSQO } from "@/components/logos/osqo";
 import { PresperLabs } from "@/components/logos/presper-labs";
 import { ReactNode } from "react";
@@ -65,6 +67,7 @@ export const experienceData: ExperienceItem[] = [
     dates: "Apr 2019 - Oct 2020",
     company: "Mogul",
     website: "https://mogul.gg/",
+    logo: <Mogul />,
     description:
       "As the Lead Front-End Developer, I led the creation of a global online E-Sports tournament platform using Vue.js.",
     bulletPoints: [
@@ -94,6 +97,7 @@ export const experienceData: ExperienceItem[] = [
     dates: "April 2018 - Sep 2018",
     company: "Horizon State",
     website: "https://horizonstate.com/",
+    logo: <HorizonState />,
     description:
       "As the Lead Front-End Developer for this blockchain voting technology platform, my role was to develop specialised front-end applications and create a reusable, cross-platform UI library.",
     bulletPoints: [
