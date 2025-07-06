@@ -206,5 +206,5 @@ Found a bug or want to contribute? Feel free to open an issue or submit a pull r
 ---
 
 <div align="center">
-  <strong>Crafted with ❤️</strong>
+  <strong>Crafted with ❤️ by Rod Leviton</strong>
 </div>
