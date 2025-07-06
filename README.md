@@ -1,4 +1,4 @@
-# 🎨 Portfolio Website
+# Rod Leviton - Portfolio Website
 
 A modern, interactive portfolio built with Next.js featuring stunning scroll animations, cross-component interactions, and a clean component-based architecture.
 
@@ -6,31 +6,6 @@ A modern, interactive portfolio built with Next.js featuring stunning scroll ani
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css)
 ![Motion](https://img.shields.io/badge/Motion-12.23.0-FF0080?style=for-the-badge&logo=framer)
-
-## ✨ Features
-
-### 🎭 Interactive Animations
-
-- **Scroll-triggered section reveals** with plus icon spinning animations
-- **Staggered skill dot animations** with customizable delay timing
-- **Cross-section highlighting** between skills and technology icons
-- **Bidirectional hover effects** linking related skills and technologies
-- **Smooth opacity transitions** for section visibility
-
-### 🏗️ Enterprise Architecture
-
-- **Component-based design** with full separation of concerns
-- **Context-driven state management** for cross-component communication
-- **Data-driven content** with centralized configuration files
-- **TypeScript throughout** for type safety and developer experience
-- **Responsive design** with mobile-first approach
-
-### 🔧 Performance Optimized
-
-- **Hardware-accelerated animations** using CSS transforms
-- **Efficient intersection observers** via Motion's useInView hook
-- **Minimal bundle size** with selective motion imports
-- **Static generation** for optimal loading performance
 
 ## 🚀 Quick Start
 
@@ -56,7 +31,7 @@ pnpm dev
 pnpm build
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see your portfolio in action!
+Visit [http://localhost:3000](http://localhost:3000) to see in action!
 
 ## 🎯 Architecture Overview
 
@@ -88,94 +63,6 @@ Visit [http://localhost:3000](http://localhost:3000) to see your portfolio in ac
     ├── skills.ts         # Technical skills
     ├── social.tsx        # Social media links
     └── technologies.tsx  # Technology stack
-```
-
-### 🔄 Animation System
-
-#### Section-Based Visibility
-
-```typescript
-// Each section detects when it comes into view
-const isInView = useInView(ref, {
-  margin: "0px 0px -100px 0px",
-  amount: 0.2,
-});
-
-// State flows down to child components via Context
-<SectionVisibilityProvider isInView={isInView}>
-  <SectionHeader /> {/* Spins plus icon when section visible */}
-</SectionVisibilityProvider>;
-```
-
-#### Cross-Component Interactions
-
-```typescript
-// Skills and technologies are linked via mapping
-const skillToTechnologyMapping = {
-  "JavaScript / TypeScript": ["JavaScript", "TypeScript"],
-  "HTML / CSS": ["HTML5", "CSS3"],
-  "React / Next.js": ["React", "Next.js"],
-};
-
-// Hover on skill → highlights related tech icons
-// Hover on tech icon → highlights related skill
-```
-
-## 🎨 Interactive Features
-
-### 🎯 Skill System
-
-- **Dot Rating Visualization**: Visual skill ratings with filled/unfilled dots
-- **Staggered Hover Animation**: Dots animate sequentially with customizable delay
-- **Label Color Change**: Skill names transition to accent color on hover
-- **Technology Cross-Highlighting**: Related technology icons highlight automatically
-
-### 🔗 Bidirectional Highlighting
-
-- **Skill → Technology**: Hover "JavaScript / TypeScript" → JavaScript & TypeScript icons highlight
-- **Technology → Skill**: Hover JavaScript icon → "JavaScript / TypeScript" skill highlights
-- **Smooth Transitions**: 300ms CSS transitions for fluid interactions
-
-### 📱 Responsive Design
-
-- **Mobile-First**: Optimized for mobile with progressive enhancement
-- **Flexible Layouts**: Components adapt to screen size automatically
-- **Touch-Friendly**: Hover effects work seamlessly on touch devices
-
-## 🎛️ Customization
-
-### Adding New Skills
-
-```typescript
-// data/skills.ts
-export const skillsData: Skill[] = [
-  { label: "New Skill", rating: 8 },
-  // ...existing skills
-];
-```
-
-### Adding New Technologies
-
-```typescript
-// data/technologies.tsx
-export const technologiesData: Technology[] = [
-  {
-    href: "https://example.com",
-    icon: <YourIcon />,
-    label: "New Tech",
-  },
-  // ...existing technologies
-];
-```
-
-### Linking Skills & Technologies
-
-```typescript
-// data/skill-technology-mapping.ts
-export const skillToTechnologyMapping = {
-  "Your New Skill": ["Related Tech 1", "Related Tech 2"],
-  // ...existing mappings
-};
 ```
 
 ## 🛠️ Development
