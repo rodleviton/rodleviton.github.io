@@ -146,7 +146,7 @@
  *  Highlight flex containers with gaps
  */
 .debug-gaps [class*="gap-"] {
-  @apply bg-background-muted/1;
+  @apply bg-background-muted/1 hover:bg-background-muted/5;
 }
 
 /**

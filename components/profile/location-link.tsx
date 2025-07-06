@@ -17,7 +17,9 @@ export function LocationLink({ href, location }: LocationLinkProps) {
         <div className="group-hover:text-accent transition-colors duration-300">
           <PinIcon />
         </div>
-        <span className="text-sm whitespace-nowrap">{location}</span>
+        <span className="text-2xs uppercase whitespace-nowrap self-end">
+          {location}
+        </span>
       </div>
     </Link>
   );
