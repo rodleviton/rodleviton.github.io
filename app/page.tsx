@@ -26,62 +26,64 @@ export default function Home() {
         locationHref={profileData.location.mapUrl}
         location={profileData.location.text}
       />
-      <SectionContainer>
-        <SectionHeader title="Introduction" />
-        <ContentRow>
-          <p className="text-sm leading-6 text-balance">
-            {profileData.introduction}
-          </p>
-        </ContentRow>
+      <main className="flex-1">
+        <SectionContainer>
+          <SectionHeader title="Introduction" />
+          <ContentRow>
+            <p className="text-sm leading-6 text-balance">
+              {profileData.introduction}
+            </p>
+          </ContentRow>
 
-        <SkillsGrid skills={skillsData} />
+          <SkillsGrid skills={skillsData} />
 
-        <TechStackGrid technologies={technologiesData} />
-      </SectionContainer>
-      <SectionContainer>
-        <SectionHeader title="Experience Summary" />
+          <TechStackGrid technologies={technologiesData} />
+        </SectionContainer>
+        <SectionContainer>
+          <SectionHeader title="Experience Summary" />
 
-        {experienceData.map((experience, index) => (
-          <ExperienceEntry
-            key={index}
-            role={experience.role}
-            dates={experience.dates}
-            company={experience.company}
-            website={experience.website}
-            logo={experience.logo}
-            description={experience.description}
-            bulletPoints={experience.bulletPoints}
-          />
-        ))}
-      </SectionContainer>
+          {experienceData.map((experience, index) => (
+            <ExperienceEntry
+              key={index}
+              role={experience.role}
+              dates={experience.dates}
+              company={experience.company}
+              website={experience.website}
+              logo={experience.logo}
+              description={experience.description}
+              bulletPoints={experience.bulletPoints}
+            />
+          ))}
+        </SectionContainer>
 
-      <SectionContainer>
-        <SectionHeader title="Open Source Projects" />
+        <SectionContainer>
+          <SectionHeader title="Open Source Projects" />
 
-        {projectsData.map((project, index) => (
-          <ProjectEntry
-            key={index}
-            platform={project.platform}
-            name={project.name}
-            repository={project.repository}
-            logo={project.logo}
-            description={project.description}
-          />
-        ))}
-      </SectionContainer>
+          {projectsData.map((project, index) => (
+            <ProjectEntry
+              key={index}
+              platform={project.platform}
+              name={project.name}
+              repository={project.repository}
+              logo={project.logo}
+              description={project.description}
+            />
+          ))}
+        </SectionContainer>
 
-      <SectionContainer>
-        <SectionHeader title="Online Presence" />
+        <SectionContainer>
+          <SectionHeader title="Online Presence" />
 
-        {socialData.map((social, index) => (
-          <SocialEntry
-            key={index}
-            platform={social.platform}
-            profileUrl={social.profileUrl}
-            logo={social.logo}
-          />
-        ))}
-      </SectionContainer>
+          {socialData.map((social, index) => (
+            <SocialEntry
+              key={index}
+              platform={social.platform}
+              profileUrl={social.profileUrl}
+              logo={social.logo}
+            />
+          ))}
+        </SectionContainer>
+      </main>
     </SkillHoverProvider>
   );
 }

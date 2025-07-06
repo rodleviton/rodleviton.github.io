@@ -12,7 +12,7 @@ export function ProjectHeader({ logo, name, repository }: ProjectHeaderProps) {
     <Link
       href={repository}
       target="_blank"
-      className="flex items-center gap-3 group"
+      className="flex gap-3 group focus:outline-1 focus:outline-accent focus-within:outline-accent"
     >
       <div className="text-foreground-muted group-hover:text-accent transition-colors duration-300">
         {logo}

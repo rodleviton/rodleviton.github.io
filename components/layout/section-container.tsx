@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode, useRef } from "react";
-import { Container } from "./container";
 import { useInView } from "motion/react";
 import { SectionVisibilityProvider } from "@/contexts/section-visibility-context";
 import { cn } from "@/utils/cn";
@@ -22,12 +21,16 @@ export function SectionContainer({
   });
 
   return (
-    <Container className={cn("py-8", className)}>
-      <SectionVisibilityProvider isInView={isInView}>
-        <section ref={ref} className="flex flex-col gap-6 md:gap-12">
-          {children}
-        </section>
-      </SectionVisibilityProvider>
-    </Container>
+    <SectionVisibilityProvider isInView={isInView}>
+      <section
+        ref={ref}
+        className={cn(
+          "container py-8 flex flex-col gap-6 md:gap-12",
+          className
+        )}
+      >
+        {children}
+      </section>
+    </SectionVisibilityProvider>
   );
 }

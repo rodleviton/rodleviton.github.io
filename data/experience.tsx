@@ -21,7 +21,7 @@ export const experienceData: ExperienceItem[] = [
     role: "Lead Front-end Developer",
     dates: "Dec 2023 - Current",
     company: "Presper Labs",
-    website: "https://www.presperlabs.com/",
+    website: "https://www.presper.com/",
     logo: <PresperLabs />,
     description:
       "In my role at Presper Labs, I am responsible for the practical development of new technologies and software for our clients. I lead the front-end development lifecycle, from the initial prototype to the final product.",

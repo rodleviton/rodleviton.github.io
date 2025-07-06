@@ -33,17 +33,19 @@ export function TechIcon({ href, icon, label }: TechIconProps) {
   };
 
   return (
-    <Link
-      href={href}
-      target="_blank"
-      className={`hover:text-accent transition-colors duration-300 dotted-line dotted-line-vertical relative ${
-        shouldHighlight ? "text-accent" : "text-foreground-muted"
-      }`}
-      aria-label={label}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      {icon}
-    </Link>
+    <div className="relative dotted-line dotted-line-vertical p-0.5">
+      <Link
+        href={href}
+        target="_blank"
+        className={`hover:text-accent transition-colors duration-300 focus:outline-1 flex focus:outline-accent focus-within:outline-accent ${
+          shouldHighlight ? "text-accent" : "text-foreground-muted"
+        }`}
+        aria-label={label}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {icon}
+      </Link>
+    </div>
   );
 }
