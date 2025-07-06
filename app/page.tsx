@@ -29,7 +29,9 @@ export default function Home() {
       <SectionContainer>
         <SectionHeader title="Introduction" />
         <ContentRow>
-          <p className="text-sm leading-6">{profileData.introduction}</p>
+          <p className="text-sm leading-6 text-balance">
+            {profileData.introduction}
+          </p>
         </ContentRow>
 
         <SkillsGrid skills={skillsData} />

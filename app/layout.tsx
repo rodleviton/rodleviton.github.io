@@ -5,6 +5,10 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Rod Leviton",
   description: "Front-end developer",
+  icons: {
+    icon: "/images/favicon/favicon.ico",
+    apple: "/images/favicon/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

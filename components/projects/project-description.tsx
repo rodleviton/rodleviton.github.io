@@ -5,7 +5,7 @@ interface ProjectDescriptionProps {
 export function ProjectDescription({ description }: ProjectDescriptionProps) {
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-sm leading-6">{description}</p>
+      <p className="text-sm leading-6 text-balance">{description}</p>
     </div>
   );
 }

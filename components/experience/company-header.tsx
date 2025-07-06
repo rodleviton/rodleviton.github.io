@@ -9,11 +9,7 @@ interface CompanyHeaderProps {
 
 export function CompanyHeader({ logo, name, website }: CompanyHeaderProps) {
   return (
-    <Link
-      href={website}
-      target="_blank"
-      className="flex items-center gap-3 group"
-    >
+    <Link href={website} target="_blank" className="flex gap-3 group">
       <div className="text-foreground-muted group-hover:text-accent transition-colors duration-300">
         {logo}
       </div>

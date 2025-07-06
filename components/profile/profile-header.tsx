@@ -20,8 +20,8 @@ export function ProfileHeader({
   location,
 }: ProfileHeaderProps) {
   return (
-    <header className="container py-12 flex gap-8 justify-between">
-      <div className="flex gap-8 items-center">
+    <header className="container py-12 flex md:flex-row flex-col gap-8 justify-between">
+      <div className="flex md:flex-row flex-col md:gap-8 gap-4 md:items-end">
         <ProfileImage src={imageSrc} alt={imageAlt} priority />
         <ProfileInfo name={name} title={title} />
       </div>

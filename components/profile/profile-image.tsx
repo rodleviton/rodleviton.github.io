@@ -12,7 +12,7 @@ export function ProfileImage({
   priority = false,
 }: ProfileImageProps) {
   return (
-    <div className="flex w-34 min-w-34 h-32 items-center justify-end">
+    <div className="flex w-34 min-w-34 h-32 items-center md:justify-end">
       <Image
         src={src}
         className="rounded-full w-28 min-w-28 h-28 min-h-28 overflow-hidden border-2 border-gray-300"

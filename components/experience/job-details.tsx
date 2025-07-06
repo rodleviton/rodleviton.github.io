@@ -6,10 +6,10 @@ interface JobDetailsProps {
 export function JobDetails({ role, dates }: JobDetailsProps) {
   return (
     <div className="w-34 min-w-34 flex flex-col gap-2">
-      <p className="text-2xs text-end font-heading font-semibold uppercase">
+      <p className="text-2xs md:text-end font-heading font-semibold uppercase">
         {role}
       </p>
-      <p className="text-2xs text-end text-foreground-muted font-heading uppercase">
+      <p className="text-2xs md:text-end text-foreground-muted font-heading uppercase">
         {dates}
       </p>
     </div>

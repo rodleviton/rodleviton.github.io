@@ -11,12 +11,12 @@ export function LocationLink({ href, location }: LocationLinkProps) {
     <Link
       target="_blank"
       href={href}
-      className="group flex gap-2 items-center self-end"
+      className="group flex gap-2 items-end md:self-end"
     >
       <div className="group-hover:text-accent transition-colors duration-300">
         <PinIcon />
       </div>
-      <span className="text-sm">{location}</span>
+      <span className="text-sm whitespace-nowrap">{location}</span>
     </Link>
   );
 }

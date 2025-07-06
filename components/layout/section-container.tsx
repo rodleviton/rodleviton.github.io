@@ -16,7 +16,6 @@ export function SectionContainer({
 }: SectionContainerProps) {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, {
-    once: true,
     margin: "0px 0px -100px 0px",
     amount: 0.2,
   });
@@ -24,7 +23,7 @@ export function SectionContainer({
   return (
     <Container className={`py-8 ${className}`}>
       <SectionVisibilityProvider isInView={isInView}>
-        <section ref={ref} className="flex flex-col gap-12">
+        <section ref={ref} className={`flex flex-col gap-6 md:gap-12`}>
           {children}
         </section>
       </SectionVisibilityProvider>

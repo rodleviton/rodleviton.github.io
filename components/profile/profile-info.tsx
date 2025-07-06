@@ -14,7 +14,9 @@ export function ProfileInfo({ name, title }: ProfileInfoProps) {
           </span>
         ))}
       </h1>
-      <h2 className="text-sm font-heading uppercase">{title}</h2>
+      <h2 className="text-sm font-heading uppercase whitespace-nowrap">
+        {title}
+      </h2>
     </div>
   );
 }
