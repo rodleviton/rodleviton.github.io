@@ -92,13 +92,36 @@
  * Toggle by adding 'debug-grid' class to body element.
  */
 .debug-grid * {
-  @apply outline-foreground/5 outline-1;
+  @apply outline-foreground/3 outline-dotted;
 }
 
 /**
  *  Highlight flex containers with gaps
  */
 .debug-gaps [class*="gap-"] {
-  background: rgba(255, 255, 0, 0.05) !important;
-  outline: 1px dashed rgba(255, 255, 0, 0.3) !important;
+  @apply bg-background-muted/1;
+}
+
+/**
+ * Custom Animations
+ */
+@keyframes spin-once {
+  0% {
+    transform: rotate(0deg) scale(0.9);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: rotate(180deg) scale(1.05);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-spin-once {
+  animation: spin-once 0.7s ease-out forwards;
 }
