@@ -2,68 +2,31 @@ import { Css3Icon } from "@/components/icons/css3";
 import { Html5Icon } from "@/components/icons/html5";
 import { JavascriptIcon } from "@/components/icons/javascript";
 import { NextIcon } from "@/components/icons/next";
-import { PinIcon } from "@/components/icons/pin";
-import { PlusIcon } from "@/components/icons/plus";
 import { ReactIcon } from "@/components/icons/react";
 import { TypescriptIcon } from "@/components/icons/typescript";
 import { Bookwell } from "@/components/logos/bookwell";
+import { CultureAmp } from "@/components/logos/culture-amp";
 import { OSQO } from "@/components/logos/osqo";
 import { PresperLabs } from "@/components/logos/presper-labs";
-import Image from "next/image";
+import { ProfileHeader } from "@/components/profile/profile-header";
+import { SectionHeader } from "@/components/sections/section-header";
+import { SkillsGrid } from "@/components/skills/skills-grid";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <header className="container py-12 flex gap-8 justify-between">
-        <div className="flex gap-8 items-center">
-          <div className="flex w-34 min-w-34 h-32 items-center justify-end">
-            <Image
-              src="/images/rodleviton.webp"
-              className="rounded-full w-28 min-w-28 h-28 min-h-28 overflow-hidden border-2 border-gray-300"
-              alt=""
-              width={512}
-              height={512}
-              priority
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <h1 className="text-4xl font-bold font-heading uppercase leading-8">
-              Rod
-              <br />
-              Leviton
-            </h1>
-            <h2 className="text-sm font-heading uppercase">
-              Front-end developer
-            </h2>
-          </div>
-        </div>
-
-        <Link
-          target="_blank"
-          href="https://maps.app.goo.gl/iMTLaehFJfjUGAuG8"
-          className="group flex gap-2 items-center self-end"
-        >
-          <div className="group-hover:text-accent transition-colors duration-300">
-            <PinIcon />
-          </div>
-          <span className="text-sm">Blue Mountains, Australia</span>
-        </Link>
-      </header>
+      <ProfileHeader
+        name="Rod Leviton"
+        title="Front-end developer"
+        imageSrc="/images/rodleviton.webp"
+        imageAlt="Rod Leviton"
+        locationHref="https://maps.app.goo.gl/iMTLaehFJfjUGAuG8"
+        location="Blue Mountains, Australia"
+      />
       <section className="container py-8 flex flex-col gap-12">
         <div className="flex flex-col gap-8">
-          <div className="flex gap-8">
-            <div className="text-accent flex items-center w-34 min-w-34 justify-end">
-              <PlusIcon size="sm" />
-            </div>
-            <div className="flex w-full gap-8 items-center">
-              <h2 className="text-xl whitespace-nowrap font-bold font-heading uppercase">
-                Introduction
-              </h2>
-              <div className="flex w-full h-px bg-foreground"></div>
-            </div>
-          </div>
+          <SectionHeader title="Introduction" />
           <div className="flex gap-8">
             <div className="w-34 min-w-34"></div>
             <div className="flex w-full">
@@ -82,95 +45,14 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-8">
-            <div className="w-34 min-w-34 flex flex-col gap-2">
-              <p className="text-2xs text-end font-heading font-semibold uppercase">
-                JavaScript / TypeScript
-              </p>
-            </div>
-            <div className="flex w-full">
-              <div className="flex gap-2 items-center">
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex gap-8">
-            <div className="w-34 min-w-34 flex flex-col gap-2">
-              <p className="text-2xs text-end font-heading font-semibold uppercase">
-                HTML / CSS
-              </p>
-            </div>
-            <div className="flex w-full">
-              <div className="flex gap-2 items-center">
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-background-muted rounded-full"></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex gap-8">
-            <div className="w-34 min-w-34 flex flex-col gap-2">
-              <p className="text-2xs text-end font-heading font-semibold uppercase">
-                UI Design / UX
-              </p>
-            </div>
-            <div className="flex w-full">
-              <div className="flex gap-2 items-center">
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-background-muted rounded-full"></div>
-                <div className="w-4 h-4 bg-background-muted rounded-full"></div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex gap-8">
-            <div className="w-34 min-w-34 flex flex-col gap-2">
-              <p className="text-2xs text-end font-heading font-semibold uppercase">
-                React / Next.js
-              </p>
-            </div>
-            <div className="flex w-full">
-              <div className="flex gap-2 items-center">
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-                <div className="w-4 h-4 bg-foreground rounded-full"></div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <SkillsGrid
+          skills={[
+            { label: "JavaScript / TypeScript", rating: 10 },
+            { label: "HTML / CSS", rating: 9 },
+            { label: "UI Design / UX", rating: 8 },
+            { label: "React / Next.js", rating: 10 },
+          ]}
+        />
 
         <div className="flex gap-8">
           <div className="w-34 min-w-34"></div>
@@ -222,17 +104,7 @@ export default function Home() {
       </section>
       <section className="container py-8 flex flex-col gap-12">
         <div className="flex flex-col gap-8">
-          <div className="flex gap-8">
-            <div className="text-accent flex items-center w-34 min-w-34 justify-end">
-              <PlusIcon size="sm" />
-            </div>
-            <div className="flex w-full gap-8 items-center">
-              <h2 className="text-xl whitespace-nowrap font-bold font-heading uppercase">
-                Experience Summary
-              </h2>
-              <div className="flex w-full h-px bg-foreground"></div>
-            </div>
-          </div>
+          <SectionHeader title="Experience Summary" />
         </div>
 
         <div className="flex gap-8">
@@ -464,6 +336,7 @@ export default function Home() {
           </div>
           <div className="flex flex-col gap-6 w-full">
             <div className="flex items-center gap-3">
+              <CultureAmp />
               <div className="flex flex-col gap-1">
                 <h3 className="text-sm font-semibold font-heading leading-none uppercase">
                   Culture Amp
