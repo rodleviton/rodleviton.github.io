@@ -11,6 +11,7 @@ import { PresperLabs } from "@/components/logos/presper-labs";
 import { ProfileHeader } from "@/components/profile/profile-header";
 import { SectionHeader } from "@/components/sections/section-header";
 import { SkillsGrid } from "@/components/skills/skills-grid";
+import { TechStackGrid } from "@/components/technology/tech-stack-grid";
 import Link from "next/link";
 
 export default function Home() {
@@ -54,53 +55,36 @@ export default function Home() {
           ]}
         />
 
-        <div className="flex gap-8">
-          <div className="w-34 min-w-34"></div>
-          <div className="flex gap-4.5">
-            <Link
-              href="https://www.javascript.com/"
-              target="_blank"
-              className="hover:text-accent transition-colors duration-300"
-            >
-              <JavascriptIcon />
-            </Link>
-            <Link
-              href="https://www.typescriptlang.org/"
-              target="_blank"
-              className="hover:text-accent transition-colors duration-300"
-            >
-              <TypescriptIcon />
-            </Link>
-            <Link
-              href="https://www.w3.org/html/"
-              target="_blank"
-              className="hover:text-accent transition-colors duration-300"
-            >
-              <Html5Icon />
-            </Link>
-            <Link
-              href="https://www.w3.org/Style/CSS/Overview.en.html"
-              target="_blank"
-              className="hover:text-accent transition-colors duration-300"
-            >
-              <Css3Icon />
-            </Link>
-            <Link
-              href="https://react.dev/"
-              target="_blank"
-              className="hover:text-accent transition-colors duration-300"
-            >
-              <ReactIcon />
-            </Link>
-            <Link
-              href="https://nextjs.org/"
-              target="_blank"
-              className="hover:text-accent transition-colors duration-300"
-            >
-              <NextIcon />
-            </Link>
-          </div>
-        </div>
+        <TechStackGrid
+          technologies={[
+            {
+              href: "https://www.javascript.com/",
+              icon: <JavascriptIcon />,
+              label: "JavaScript",
+            },
+            {
+              href: "https://www.typescriptlang.org/",
+              icon: <TypescriptIcon />,
+              label: "TypeScript",
+            },
+            {
+              href: "https://www.w3.org/html/",
+              icon: <Html5Icon />,
+              label: "HTML5",
+            },
+            {
+              href: "https://www.w3.org/Style/CSS/Overview.en.html",
+              icon: <Css3Icon />,
+              label: "CSS3",
+            },
+            { href: "https://react.dev/", icon: <ReactIcon />, label: "React" },
+            {
+              href: "https://nextjs.org/",
+              icon: <NextIcon />,
+              label: "Next.js",
+            },
+          ]}
+        />
       </section>
       <section className="container py-8 flex flex-col gap-12">
         <div className="flex flex-col gap-8">
