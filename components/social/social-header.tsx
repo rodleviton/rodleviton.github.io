@@ -13,20 +13,22 @@ export function SocialHeader({
   profileUrl,
 }: SocialHeaderProps) {
   return (
-    <div className="flex items-center gap-3">
-      {logo}
+    <Link
+      href={profileUrl}
+      target="_blank"
+      className="flex items-center gap-3 group"
+    >
+      <div className="text-foreground-muted group-hover:text-accent transition-colors duration-300">
+        {logo}
+      </div>
       <div className="flex flex-col gap-1">
         <h3 className="text-sm font-semibold font-heading leading-none uppercase">
           {platform}
         </h3>
-        <Link
-          href={profileUrl}
-          target="_blank"
-          className="text-xs text-foreground-muted font-heading leading-none hover:text-accent transition-colors duration-300"
-        >
+        <div className="text-xs text-foreground-muted font-heading leading-none group-hover:text-accent transition-colors duration-300">
           {profileUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
-        </Link>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
