@@ -19,9 +19,11 @@ export function ProjectEntry({
   description,
 }: ProjectEntryProps) {
   return (
-    <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-      <ProjectDetails platform={platform} />
-      <div className="flex flex-col gap-6 w-full">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-8 dotted-line dotted-line-horizontal relative">
+      <div className="dotted-line dotted-line-vertical relative">
+        <ProjectDetails platform={platform} />
+      </div>
+      <div className="flex flex-col gap-6 w-full dotted-line dotted-line-vertical relative">
         <ProjectHeader logo={logo} name={name} repository={repository} />
         <ProjectDescription description={description} />
       </div>

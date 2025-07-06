@@ -23,9 +23,11 @@ export function ExperienceEntry({
   bulletPoints,
 }: ExperienceEntryProps) {
   return (
-    <div className="flex flex-col md:flex-row gap-4 md:gap-8">
-      <JobDetails role={role} dates={dates} />
-      <div className="flex flex-col gap-6 w-full">
+    <div className="flex flex-col md:flex-row gap-4 md:gap-8 dotted-line dotted-line-horizontal relative">
+      <div className="dotted-line dotted-line-vertical relative">
+        <JobDetails role={role} dates={dates} />
+      </div>
+      <div className="flex flex-col gap-6 w-full dotted-line dotted-line-vertical relative">
         <CompanyHeader logo={logo} name={company} website={website} />
         <JobDescription description={description} bulletPoints={bulletPoints} />
       </div>

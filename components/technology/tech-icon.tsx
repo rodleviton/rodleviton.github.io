@@ -36,7 +36,7 @@ export function TechIcon({ href, icon, label }: TechIconProps) {
     <Link
       href={href}
       target="_blank"
-      className={`hover:text-accent transition-colors duration-300 ${
+      className={`hover:text-accent transition-colors duration-300 dotted-line dotted-line-vertical relative ${
         shouldHighlight ? "text-accent" : "text-foreground-muted"
       }`}
       aria-label={label}

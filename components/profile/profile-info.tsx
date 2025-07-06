@@ -5,8 +5,8 @@ interface ProfileInfoProps {
 
 export function ProfileInfo({ name, title }: ProfileInfoProps) {
   return (
-    <div className="flex flex-col gap-2">
-      <h1 className="text-4xl font-bold font-heading uppercase leading-8">
+    <div className="flex h-34 min-h-34 flex-col gap-2 dotted-line dotted-line-vertical relative justify-end">
+      <h1 className="text-4xl font-bold font-heading uppercase leading-none dotted-line dotted-line-horizontal relative">
         {name.split(" ").map((part, index) => (
           <span key={index}>
             {part}
@@ -14,7 +14,7 @@ export function ProfileInfo({ name, title }: ProfileInfoProps) {
           </span>
         ))}
       </h1>
-      <h2 className="text-sm font-heading uppercase whitespace-nowrap">
+      <h2 className="text-sm leading-none font-heading uppercase whitespace-nowrap dotted-line dotted-line-horizontal relative">
         {title}
       </h2>
     </div>

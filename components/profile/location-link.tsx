@@ -11,12 +11,14 @@ export function LocationLink({ href, location }: LocationLinkProps) {
     <Link
       target="_blank"
       href={href}
-      className="group flex gap-2 items-end md:self-end"
+      className="group items-end md:self-end dotted-line dotted-line-vertical relative"
     >
-      <div className="group-hover:text-accent transition-colors duration-300">
-        <PinIcon />
+      <div className="flex gap-2 h-full items-center dotted-line dotted-line-horizontal relative">
+        <div className="group-hover:text-accent transition-colors duration-300">
+          <PinIcon />
+        </div>
+        <span className="text-sm whitespace-nowrap">{location}</span>
       </div>
-      <span className="text-sm whitespace-nowrap">{location}</span>
     </Link>
   );
 }

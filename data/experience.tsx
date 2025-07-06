@@ -24,7 +24,7 @@ export const experienceData: ExperienceItem[] = [
     website: "https://www.presperlabs.com/",
     logo: <PresperLabs />,
     description:
-      "As the Lead Front-End Engineer at Presper Labs, I'm responsible for the practical development of new technologies and software for our clients. My role involves leading the front-end development lifecycle, from initial prototype to final product.",
+      "In my role at Presper Labs, I am responsible for the practical development of new technologies and software for our clients. I lead the front-end development lifecycle, from the initial prototype to the final product.",
     bulletPoints: [
       "Lead the front-end architecture and development for new software prototypes.",
       "Collaborate with clients to build custom software solutions to meet their needs.",
@@ -39,7 +39,7 @@ export const experienceData: ExperienceItem[] = [
     website: "https://depositgaploans.com/",
     logo: <OSQO />,
     description:
-      "As a foundation team member at this innovative financial services technology startup, I was responsible for building and leading all front-end development initiatives from the ground up.",
+      "As a founding team member at this financial services technology startup, my work involved building and leading all front-end development initiatives from the ground up.",
     bulletPoints: [
       "Built a scalable front-end architecture using React and TypeScript.",
       "Automated the front-end infrastructure to improve development efficiency.",
@@ -69,7 +69,7 @@ export const experienceData: ExperienceItem[] = [
     website: "https://mogul.gg/",
     logo: <Mogul />,
     description:
-      "As the Lead Front-End Developer, I led the creation of a global online E-Sports tournament platform using Vue.js.",
+      "My role involved leading the creation of a global online E-Sports tournament platform using Vue.js.",
     bulletPoints: [
       "Developed online E-sports tournament platform with a focus on rapid creation and deployment.",
       "Built a comprehensive component library to streamline future development efforts.",
@@ -99,7 +99,7 @@ export const experienceData: ExperienceItem[] = [
     website: "https://horizonstate.com/",
     logo: <HorizonState />,
     description:
-      "As the Lead Front-End Developer for this blockchain voting technology platform, my role was to develop specialised front-end applications and create a reusable, cross-platform UI library.",
+      "For this blockchain voting technology platform, my work was to develop specialised front-end applications and create a reusable, cross-platform UI library.",
     bulletPoints: [
       "Built a modular UI library with React Native Web for seamless reuse across native and web platforms.",
       "Rapidly prototyped concepts using Invision to expedite the design and development process.",

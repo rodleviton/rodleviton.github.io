@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { sans, heading } from "@/lib/fonts";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/theme-provider";
 
 export const metadata: Metadata = {
   title: "Rod Leviton",
@@ -19,10 +20,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark debug-gaps debug-grid  ${sans.variable} ${heading.variable}`}
+      className={`dark debug-gaps ${sans.variable} ${heading.variable}`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col">
-        <main className="flex-1">{children}</main>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="flex-1">{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );

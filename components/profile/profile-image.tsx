@@ -12,15 +12,19 @@ export function ProfileImage({
   priority = false,
 }: ProfileImageProps) {
   return (
-    <div className="flex w-34 min-w-34 h-32 items-center md:justify-end">
-      <Image
-        src={src}
-        className="rounded-full w-28 min-w-28 h-28 min-h-28 overflow-hidden border-2 border-gray-300"
-        alt={alt}
-        width={512}
-        height={512}
-        priority={priority}
-      />
+    <div className="flex w-34 min-w-34 h-34 min-h-34 items-center md:justify-end">
+      <div className="flex items-center dotted-line dotted-line-vertical relative">
+        <div className="flex items-center dotted-line dotted-line-horizontal relative">
+          <Image
+            src={src}
+            className="rounded-full"
+            alt={alt}
+            width={512}
+            height={512}
+            priority={priority}
+          />
+        </div>
+      </div>
     </div>
   );
 }

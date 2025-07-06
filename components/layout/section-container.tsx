@@ -4,6 +4,7 @@ import { ReactNode, useRef } from "react";
 import { Container } from "./container";
 import { useInView } from "motion/react";
 import { SectionVisibilityProvider } from "@/contexts/section-visibility-context";
+import { cn } from "@/utils/cn";
 
 interface SectionContainerProps {
   children: ReactNode;
@@ -21,9 +22,9 @@ export function SectionContainer({
   });
 
   return (
-    <Container className={`py-8 ${className}`}>
+    <Container className={cn("py-8", className)}>
       <SectionVisibilityProvider isInView={isInView}>
-        <section ref={ref} className={`flex flex-col gap-6 md:gap-12`}>
+        <section ref={ref} className="flex flex-col gap-6 md:gap-12">
           {children}
         </section>
       </SectionVisibilityProvider>
