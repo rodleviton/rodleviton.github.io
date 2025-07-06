@@ -16,7 +16,10 @@ export function SkillRating({
   maxRating = 10,
 }: SkillRatingProps) {
   const [isHovered, setIsHovered] = useState(false);
-  const { setHoveredSkill } = useSkillHover();
+  const { hoveredSkill, setHoveredSkill } = useSkillHover();
+
+  // Check if this skill should be highlighted from technology hover
+  const shouldHighlight = isHovered || hoveredSkill === label;
 
   const handleHoverStart = () => {
     setIsHovered(true);
@@ -37,7 +40,7 @@ export function SkillRating({
       <div className="w-34 min-w-34 flex flex-col gap-2">
         <p
           className={`text-2xs text-end font-heading font-semibold uppercase transition-colors duration-300 ${
-            isHovered ? "text-accent" : "text-foreground"
+            shouldHighlight ? "text-accent" : "text-foreground"
           }`}
         >
           {label}
@@ -49,7 +52,7 @@ export function SkillRating({
             <SkillDot
               key={index}
               filled={index < rating}
-              isHovered={isHovered}
+              isHovered={shouldHighlight}
               delay={index * 0.065}
             />
           ))}

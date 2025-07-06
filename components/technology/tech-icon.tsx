@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import { useSkillHover } from "@/contexts/skill-hover-context";
-import { skillToTechnologyMapping } from "@/data/skill-technology-mapping";
+import {
+  skillToTechnologyMapping,
+  technologyToSkillMapping,
+} from "@/data/skill-technology-mapping";
 
 interface TechIconProps {
   href: string;
@@ -12,11 +15,22 @@ interface TechIconProps {
 }
 
 export function TechIcon({ href, icon, label }: TechIconProps) {
-  const { hoveredSkill } = useSkillHover();
+  const { hoveredSkill, setHoveredSkill } = useSkillHover();
 
   // Check if this technology should be highlighted based on hovered skill
   const shouldHighlight =
     hoveredSkill && skillToTechnologyMapping[hoveredSkill]?.includes(label);
+
+  const handleMouseEnter = () => {
+    const relatedSkill = technologyToSkillMapping[label];
+    if (relatedSkill) {
+      setHoveredSkill(relatedSkill);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredSkill(null);
+  };
 
   return (
     <Link
@@ -26,6 +40,8 @@ export function TechIcon({ href, icon, label }: TechIconProps) {
         shouldHighlight ? "text-accent" : "text-foreground-muted"
       }`}
       aria-label={label}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {icon}
     </Link>
