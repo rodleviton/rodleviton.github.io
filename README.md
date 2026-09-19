@@ -1,95 +1,87 @@
-# Rod Leviton - Portfolio Website
+# rodleviton.github.io
 
-A modern, interactive portfolio built with Next.js featuring stunning scroll animations, cross-component interactions, and a clean component-based architecture.
+Source for my personal site, live at [rodleviton.github.io](https://rodleviton.github.io).
 
-![Next.js](https://img.shields.io/badge/Next.js-15.3.5-black?style=for-the-badge&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=for-the-badge&logo=tailwind-css)
-![Motion](https://img.shields.io/badge/Motion-12.23.0-FF0080?style=for-the-badge&logo=framer)
+A single static page: introduction, experience, selected work, and links. Built
+with Next.js and exported as static files, then published to GitHub Pages by a
+workflow on every push to `main`.
 
-## 🚀 Quick Start
+## Running it
 
-### Prerequisites
-
-- Node.js 18+
-- pnpm (recommended) or npm
-
-### Installation
+Requires Node 22 (see `.nvmrc`; Next 16 needs 20.9 or newer) and pnpm.
 
 ```bash
-# Clone the repository
-git clone https://github.com/rodleviton/rodleviton.git
-cd rodleviton
-
-# Install dependencies
 pnpm install
-
-# Start development server
-pnpm dev
-
-# Build for production
-pnpm build
+pnpm dev        # http://localhost:3000
+pnpm build      # static export into out/
+pnpm lint
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to see in action!
+## How it is built
 
-## 🎯 Architecture Overview
+| | |
+|---|---|
+| Framework | Next.js 16, App Router, `output: "export"` |
+| UI | React 19, TypeScript, Tailwind CSS 4 |
+| Motion | Motion, for scroll-triggered reveals |
+| Theming | next-themes, dark by default |
+| Fonts | Montserrat for headings, Inter for body, via `next/font` |
 
-### 📁 Project Structure
+### Two dependencies are deliberately held back
+
+Both are ecosystem limits rather than anything in this project. Bumping either
+one breaks linting entirely, so check upstream before trying again.
+
+- **TypeScript stays on 5.x.** `typescript-eslint` does not support TypeScript 7
+  and refuses to load against it.
+  ([tracking issue](https://github.com/typescript-eslint/typescript-eslint/issues/10940))
+- **ESLint stays on 9.x.** `eslint-plugin-react`, pulled in transitively by
+  `eslint-config-next`, calls a context API that ESLint 10 removed.
+
+## Layout
 
 ```
-├── app/                    # Next.js App Router
-│   ├── globals.css        # Global styles & animations
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx           # Main portfolio page
-├── components/            # Reusable UI components
-│   ├── experience/        # Job experience components
-│   ├── icons/            # SVG icon components
-│   ├── layout/           # Layout & container components
-│   ├── logos/            # Company & technology logos
-│   ├── profile/          # Profile header components
-│   ├── projects/         # Open source project components
-│   ├── sections/         # Section header with animations
-│   ├── skills/           # Interactive skill components
-│   ├── social/           # Social media link components
-│   └── technology/       # Technology stack components
-├── contexts/             # React Context providers
-│   ├── section-visibility-context.tsx
-│   └── skill-hover-context.tsx
-└── data/                 # Content configuration
-    ├── experience.tsx    # Job history data
-    ├── profile.ts        # Personal information
-    ├── projects.tsx      # Open source projects
-    ├── skills.ts         # Technical skills
-    ├── social.tsx        # Social media links
-    └── technologies.tsx  # Technology stack
+app/              Root layout, the page, global styles, OG image
+components/
+  experience/     Roles and their bullet points
+  projects/       Selected work, each with a measured status
+  profile/        Header, portrait, location
+  layout/         Section container and content rows
+  sections/       Section headers
+  skills/         Skill rows, cross-highlighting the technology grid
+  technology/     Technology grid and icons
+  social/         Elsewhere links
+  terminal/       Command prompt and its commands
+  logos/          Company and project marks, as inline SVG
+  icons/          Icon primitive and the icon set
+  theme/          Theme provider and toggle
+  ui/             shadcn primitives
+contexts/         Section visibility, skill hover
+data/             All content lives here
+lib/              Fonts, class-name helper
 ```
 
-## 🛠️ Development
+Content is data, not markup. Editing `data/` changes the site; the components
+render whatever is there.
 
-### Key Technologies
+## Things worth knowing
 
-- **Next.js** - React framework with App Router
-- **TypeScript** - Type safety and developer experience
-- **Tailwind CSS 4** - Utility-first styling
-- **Motion** - Scroll animations and interactions
-- **@rpxl/recast** - Component variant system
+- **Command prompt.** `Cmd+K`, or the button in the footer. It drives the real
+  page: `grid`, `theme`, `goto`, `status`. Values in `status` are measured at
+  runtime or stamped at build, never authored.
+- **The blueprint.** The dotted rules are a real grid, and they draw themselves
+  in as each section scrolls into view. Disabled under `prefers-reduced-motion`.
+- **Footer readout.** Build SHA resolved from git at build time, live viewport,
+  and local time.
 
-### Animation Performance
+## Deployment
 
-- **CSS Transforms** for hardware acceleration
-- **Intersection Observer** for efficient scroll detection
-- **Context API** for state management without prop drilling
-- **Conditional Rendering** to minimize DOM updates
+`.github/workflows/deploy.yml` installs from the lockfile, checks types, lints,
+builds the static export, and publishes `out/` to GitHub Pages. The Pages source
+is set to GitHub Actions; `public/.nojekyll` keeps Jekyll from processing the
+output and skipping the `_next` directory.
 
-## 📄 License
+## License
 
-MIT License - feel free to use this portfolio as inspiration for your own!
-
-## 🤝 Contributing
-
-Found a bug or want to contribute? Feel free to open an issue or submit a pull request!
-
----
-
-Crafted with ❤️ by Rod Leviton
+MIT. The writing, imagery, and company marks are not mine to give away, but the
+code is yours to learn from.

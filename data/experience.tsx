@@ -18,8 +18,7 @@ export interface ExperienceItem {
 
 export const experienceData: ExperienceItem[] = [
   {
-    // TODO(rod): confirm your exact title.
-    role: "Lead Front-end Developer",
+    role: "Lead Front-End Developer",
     dates: "Jul 2025 - Current",
     company: "GYRO",
     website: "https://www.gyro.music/",
