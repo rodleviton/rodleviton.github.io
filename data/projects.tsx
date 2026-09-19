@@ -1,4 +1,5 @@
 import { Eko } from "@/components/logos/eko";
+import { GrooveUnit } from "@/components/logos/groove-unit";
 import { InSitue } from "@/components/logos/insitue";
 import { MiniMecha } from "@/components/logos/mini-mecha";
 import { Recast } from "@/components/logos/recast";
@@ -52,7 +53,8 @@ export const projectsData: ProjectItem[] = [
   {
     category: "Game",
     name: "Groove Unit",
-    url: "https://www.reactivepixels.com",
+    url: "https://www.reactivepixels.com/grooveunit",
+    logo: <GrooveUnit />,
     description:
       "A desk companion that dances in time to whatever you are actually playing, using onset detection over system audio. Godot and Rust, with the DSP written by hand rather than pulled from a library.",
     status: "Engine complete, unreleased",
