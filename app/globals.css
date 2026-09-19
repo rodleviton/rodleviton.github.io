@@ -169,18 +169,14 @@
 /**
  * Display flags
  *
- * Set on the document root by the command prompt. The blueprint and the
- * dimension lines are decoration, so hiding them changes nothing structural.
+ * Set on the document root by the command prompt. The blueprint rules are
+ * decoration, so hiding them changes nothing structural.
  */
 .no-grid .dotted-line-horizontal::before,
 .no-grid .dotted-line-horizontal::after,
 .no-grid .dotted-line-vertical::before,
 .no-grid .dotted-line-vertical::after {
   opacity: 0;
-}
-
-.no-dimensions [data-section-dimension] {
-  display: none;
 }
 
 /**

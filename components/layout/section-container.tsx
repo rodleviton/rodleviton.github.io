@@ -3,7 +3,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { useInView } from "motion/react";
 import { SectionVisibilityProvider } from "@/contexts/section-visibility-context";
-import { SectionDimension } from "./section-dimension";
 import { cn } from "@/lib/utils";
 
 interface SectionContainerProps {
@@ -42,7 +41,6 @@ export function SectionContainer({
           className
         )}
       >
-        <SectionDimension target={ref} />
         {children}
       </section>
     </SectionVisibilityProvider>

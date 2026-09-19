@@ -62,13 +62,6 @@ export const commands: Command[] = [
     run: (args, context) => toggleRootClass("no-grid", args, "Grid", context),
   },
   {
-    name: "dimensions",
-    usage: "dimensions [on|off]",
-    summary: "Show or hide the measured dimension lines.",
-    run: (args, context) =>
-      toggleRootClass("no-dimensions", args, "Dimensions", context),
-  },
-  {
     name: "theme",
     usage: "theme [dark|light|system]",
     summary: "Switch the colour scheme.",
@@ -129,7 +122,6 @@ export const commands: Command[] = [
         `viewport     ${window.innerWidth} x ${window.innerHeight}`,
         `theme        ${context.resolvedTheme ?? "unknown"}`,
         `grid         ${root.classList.contains("no-grid") ? "off" : "on"}`,
-        `dimensions   ${root.classList.contains("no-dimensions") ? "off" : "on"}`,
         `roles        ${experienceData.length}`,
         `projects     ${projectsData.length} listed, ${shipped} shipped`,
       ]);
