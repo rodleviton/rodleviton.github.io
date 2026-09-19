@@ -25,8 +25,13 @@
     --secondary-foreground: oklch(0.205 0 0);
     --muted: oklch(0.97 0 0);
     --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.6635 0.2037 6.85);
-    --accent-foreground: oklch(0.6635 0.2037 6.85);
+    /*
+     * Light mode carries its own accent. The dark-mode value is #F34D7E, which
+     * is 5.18:1 on the dark background but only 3.40:1 on white, so every
+     * accent-as-text use failed here. Same hue and chroma, lower lightness.
+     */
+    --accent: oklch(0.58 0.2037 6.85);
+    --accent-foreground: oklch(0.58 0.2037 6.85);
     --destructive: oklch(0.577 0.245 27.325);
     --border: oklch(0.922 0 0);
     --input: oklch(0.922 0 0);
@@ -215,6 +220,25 @@
 
   .draft-role {
     animation: draft-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) 720ms both;
+  }
+}
+
+/**
+ * The section rule
+ *
+ * It was the loudest element on the page and carried no information. Drawing
+ * it as the section arrives makes it part of the drafting rather than
+ * decoration laid over it.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .draw-lines .section-rule {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1) 260ms;
+  }
+
+  .draw-lines.is-drawn .section-rule {
+    transform: scaleX(1);
   }
 }
 
