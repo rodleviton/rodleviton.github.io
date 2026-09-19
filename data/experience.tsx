@@ -18,7 +18,7 @@ export interface ExperienceItem {
 
 export const experienceData: ExperienceItem[] = [
   {
-    role: "Lead Front-End Developer",
+    role: "Lead Front-end Developer",
     dates: "Jul 2025 - Current",
     company: "GYRO",
     website: "https://www.gyro.music/",
@@ -69,7 +69,7 @@ export const experienceData: ExperienceItem[] = [
     website: "https://www.bookwell.com.au/",
     logo: <Bookwell />,
     description:
-      "As the Lead Front-End Developer for this online beauty and wellness booking platform, I led a complete refresh of the user interface and underlying design systems.",
+      "As the Lead Front-end Developer for this online beauty and wellness booking platform, I led a complete refresh of the user interface and underlying design systems.",
     bulletPoints: [
       "Led a comprehensive design overhaul for existing Bookwell applications.",
       "Established a new Design System to improve UI/UX consistency and streamline development.",
@@ -98,7 +98,7 @@ export const experienceData: ExperienceItem[] = [
     website: "https://www.cultureamp.com/",
     logo: <CultureAmp />,
     description:
-      "As a Lead Front-End Developer for this employee management and experience platform, I focused on expanding the product's global reach through extensive localisation efforts.",
+      "As a Lead Front-end Developer for this employee management and experience platform, I focused on expanding the product's global reach through extensive localisation efforts.",
     bulletPoints: [
       "Led the localisation project for the company's staff management tool.",
       "Implemented Right-to-Left (RTL) localisation to support Arabic translations",
