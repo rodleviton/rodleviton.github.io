@@ -10,5 +10,5 @@ export const profileData = {
     mapUrl: "https://maps.app.goo.gl/iMTLaehFJfjUGAuG8",
   },
   introduction:
-    "For over 20 years, I have specialised in building user-centric interfaces for both fast-paced tech startups and large-scale financial institutions. As a highly skilled JavaScript developer and technical lead, I architect scalable front-end systems and component libraries that empower teams to turn visual concepts into reality. I am passionate about leading and mentoring developers, fostering collaboration with design teams, and delivering web experiences that are performant and well-engineered.",
+    "For over twenty years I have specialised in building user-centric interfaces, for fast-paced startups and for large-scale financial institutions. I architect front-end systems and component libraries, and I care most about the people who have to build on top of them. I currently own every user-facing surface at GYRO, an independent music distributor. Outside that I design and ship my own products: numbered resin model kits, a developer tool, and a native Mac audio client.",
 };

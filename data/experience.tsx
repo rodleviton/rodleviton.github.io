@@ -18,8 +18,23 @@ export interface ExperienceItem {
 
 export const experienceData: ExperienceItem[] = [
   {
+    // TODO(rod): confirm your exact title.
     role: "Lead Front-end Developer",
-    dates: "Dec 2023 - Current",
+    dates: "Jul 2025 - Current",
+    company: "GYRO",
+    website: "https://www.gyro.music/",
+    description:
+      "GYRO is an independent, Australian-owned music distribution platform that places artists on over 100 streaming services while they keep 92% of their royalties. I own every user-facing surface: the customer dashboard, the admin dashboard, and the marketing work around them.",
+    bulletPoints: [
+      "Own every user-facing interface across the platform.",
+      "Build the customer dashboard artists use to manage releases, royalties and streaming analytics.",
+      "Build the admin dashboard the team uses to operate the distribution platform.",
+      "Produce marketing assets and site work alongside the product surfaces.",
+    ],
+  },
+  {
+    role: "Lead Front-end Developer",
+    dates: "Dec 2023 - Jun 2025",
     company: "Presper Labs",
     website: "https://www.presper.com/",
     logo: <PresperLabs />,

@@ -1,25 +1,20 @@
 "use client";
 
-import { SkillDot } from "./skill-dot";
 import { useState } from "react";
 import { useSkillHover } from "@/contexts/skill-hover-context";
+import { skillToTechnologyMapping } from "@/data/skill-technology-mapping";
 
-interface SkillRatingProps {
+interface SkillRowProps {
   label: string;
-  rating: number;
-  maxRating?: number;
 }
 
-export function SkillRating({
-  label,
-  rating,
-  maxRating = 10,
-}: SkillRatingProps) {
+export function SkillRow({ label }: SkillRowProps) {
   const [isHovered, setIsHovered] = useState(false);
   const { hoveredSkill, setHoveredSkill } = useSkillHover();
 
-  // Check if this skill should be highlighted from technology hover
+  // Highlight when hovered directly, or when the matching technology icon is hovered
   const shouldHighlight = isHovered || hoveredSkill === label;
+  const technologies = skillToTechnologyMapping[label] ?? [];
 
   const handleHoverStart = () => {
     setIsHovered(true);
@@ -33,7 +28,7 @@ export function SkillRating({
 
   return (
     <div
-      className="flex flex-col md:flex-row py-2 gap-2 md:gap-8 hover:cursor-pointer dotted-line dotted-line-horizontal relative"
+      className="flex flex-col md:flex-row py-2 gap-2 md:gap-8 hover:cursor-default dotted-line dotted-line-horizontal relative"
       onMouseEnter={handleHoverStart}
       onMouseLeave={handleHoverEnd}
     >
@@ -46,15 +41,17 @@ export function SkillRating({
           {label}
         </p>
       </div>
-      <div className="flex dotted-line dotted-line-vertical relative">
-        <div className="flex gap-2 items-center">
-          {Array.from({ length: maxRating }, (_, index) => (
-            <SkillDot
-              key={index}
-              filled={index < rating}
-              isHovered={shouldHighlight}
-              delay={index * 0.065}
-            />
+      <div className="flex items-center dotted-line dotted-line-vertical relative">
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          {technologies.map((technology) => (
+            <span
+              key={technology}
+              className={`text-2xs font-heading uppercase tracking-widest transition-colors duration-300 ${
+                shouldHighlight ? "text-accent" : "text-foreground-muted"
+              }`}
+            >
+              {technology}
+            </span>
           ))}
         </div>
       </div>

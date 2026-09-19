@@ -1,8 +1,7 @@
-import { SkillRating } from "./skill-rating";
+import { SkillRow } from "./skill-row";
 
 interface Skill {
   label: string;
-  rating: number;
 }
 
 interface SkillsGridProps {
@@ -12,8 +11,8 @@ interface SkillsGridProps {
 export function SkillsGrid({ skills }: SkillsGridProps) {
   return (
     <div className="flex flex-col">
-      {skills.map((skill, index) => (
-        <SkillRating key={index} label={skill.label} rating={skill.rating} />
+      {skills.map((skill) => (
+        <SkillRow key={skill.label} label={skill.label} />
       ))}
     </div>
   );

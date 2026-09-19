@@ -1,9 +1,10 @@
 "use client";
 
-import { ReactNode, useRef } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { useInView } from "motion/react";
 import { SectionVisibilityProvider } from "@/contexts/section-visibility-context";
-import { cn } from "@/utils/cn";
+import { SectionDimension } from "./section-dimension";
+import { cn } from "@/lib/utils";
 
 interface SectionContainerProps {
   children: ReactNode;
@@ -20,15 +21,24 @@ export function SectionContainer({
     amount: 0.2,
   });
 
+  // The blueprint is drawn once and stays drawn; retracting it on scroll-away
+  // would read as a glitch rather than as drafting.
+  const [hasBeenDrawn, setHasBeenDrawn] = useState(false);
+  useEffect(() => {
+    if (isInView) setHasBeenDrawn(true);
+  }, [isInView]);
+
   return (
     <SectionVisibilityProvider isInView={isInView}>
       <section
         ref={ref}
         className={cn(
-          "container py-8 flex flex-col gap-6 md:gap-12",
+          "container py-8 flex flex-col gap-6 md:gap-12 relative draw-lines",
+          hasBeenDrawn && "is-drawn",
           className
         )}
       >
+        <SectionDimension target={ref} />
         {children}
       </section>
     </SectionVisibilityProvider>

@@ -2,29 +2,35 @@ import { ReactNode } from "react";
 import { ProjectDetails } from "./project-details";
 import { ProjectHeader } from "./project-header";
 import { ProjectDescription } from "./project-description";
+import { ProjectStatus } from "./project-status";
 
 interface ProjectEntryProps {
-  platform: string;
+  category: string;
   name: string;
-  repository: string;
+  url: string;
   logo?: ReactNode;
   description: string;
+  status: string;
+  detail: string;
 }
 
 export function ProjectEntry({
-  platform,
+  category,
   name,
-  repository,
+  url,
   logo,
   description,
+  status,
+  detail,
 }: ProjectEntryProps) {
   return (
     <div className="flex flex-col md:flex-row gap-4 md:gap-8 dotted-line dotted-line-horizontal relative">
       <div className="dotted-line dotted-line-vertical relative">
-        <ProjectDetails platform={platform} />
+        <ProjectDetails category={category} />
       </div>
-      <div className="flex flex-col gap-6 w-full dotted-line dotted-line-vertical relative">
-        <ProjectHeader logo={logo} name={name} repository={repository} />
+      <div className="flex flex-col gap-4 w-full dotted-line dotted-line-vertical relative">
+        <ProjectHeader logo={logo} name={name} url={url} />
+        <ProjectStatus status={status} detail={detail} />
         <ProjectDescription description={description} />
       </div>
     </div>

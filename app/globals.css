@@ -143,13 +143,6 @@
 }
 
 /**
- *  Highlight flex containers with gaps
- */
-.debug-gaps [class*="gap-"] {
-  @apply bg-background-muted/1 hover:bg-background-muted/5;
-}
-
-/**
  * Custom Animations
  */
 @keyframes spin-once {
@@ -171,6 +164,40 @@
 
 .animate-spin-once {
   animation: spin-once 0.7s ease-out forwards;
+}
+
+/**
+ * Drafting animation
+ *
+ * A section marked `.draw-lines` holds its blueprint rules at zero length until
+ * it scrolls into view and picks up `.is-drawn`, so the grid appears to be drawn
+ * rather than painted. Horizontals run first, verticals follow.
+ */
+@media (prefers-reduced-motion: no-preference) {
+
+  .draw-lines .dotted-line-horizontal::before,
+  .draw-lines .dotted-line-horizontal::after {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .draw-lines .dotted-line-vertical::before,
+  .draw-lines .dotted-line-vertical::after {
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1) 160ms;
+  }
+
+  .draw-lines.is-drawn .dotted-line-horizontal::before,
+  .draw-lines.is-drawn .dotted-line-horizontal::after {
+    transform: scaleX(1);
+  }
+
+  .draw-lines.is-drawn .dotted-line-vertical::before,
+  .draw-lines.is-drawn .dotted-line-vertical::after {
+    transform: scaleY(1);
+  }
 }
 
 .dotted-line {

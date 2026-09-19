@@ -42,9 +42,9 @@ export default function Home() {
         <SectionContainer>
           <SectionHeader title="Experience Summary" />
 
-          {experienceData.map((experience, index) => (
+          {experienceData.map((experience) => (
             <ExperienceEntry
-              key={index}
+              key={experience.company}
               role={experience.role}
               dates={experience.dates}
               company={experience.company}
@@ -57,16 +57,18 @@ export default function Home() {
         </SectionContainer>
 
         <SectionContainer>
-          <SectionHeader title="Open Source Projects" />
+          <SectionHeader title="Selected Work" />
 
-          {projectsData.map((project, index) => (
+          {projectsData.map((project) => (
             <ProjectEntry
-              key={index}
-              platform={project.platform}
+              key={project.name}
+              category={project.category}
               name={project.name}
-              repository={project.repository}
+              url={project.url}
               logo={project.logo}
               description={project.description}
+              status={project.status}
+              detail={project.detail}
             />
           ))}
         </SectionContainer>
@@ -74,9 +76,9 @@ export default function Home() {
         <SectionContainer>
           <SectionHeader title="Online Presence" />
 
-          {socialData.map((social, index) => (
+          {socialData.map((social) => (
             <SocialEntry
-              key={index}
+              key={social.platform}
               platform={social.platform}
               profileUrl={social.profileUrl}
               logo={social.logo}
