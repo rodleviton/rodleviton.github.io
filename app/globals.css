@@ -25,8 +25,13 @@
     --secondary-foreground: oklch(0.205 0 0);
     --muted: oklch(0.97 0 0);
     --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.6635 0.2037 6.85);
-    --accent-foreground: oklch(0.6635 0.2037 6.85);
+    /*
+     * Light mode carries its own accent. The dark-mode value is #F34D7E, which
+     * is 5.18:1 on the dark background but only 3.40:1 on white, so every
+     * accent-as-text use failed here. Same hue and chroma, lower lightness.
+     */
+    --accent: oklch(0.58 0.2037 6.85);
+    --accent-foreground: oklch(0.58 0.2037 6.85);
     --destructive: oklch(0.577 0.245 27.325);
     --border: oklch(0.922 0 0);
     --input: oklch(0.922 0 0);
@@ -177,6 +182,126 @@
 .no-grid .dotted-line-vertical::before,
 .no-grid .dotted-line-vertical::after {
   opacity: 0;
+}
+
+/**
+ * Masthead
+ *
+ * The name is not faded in, it is drawn: a crimson rule sweeps across and the
+ * letterforms are uncovered behind it, once, on load.
+ */
+@keyframes draft-sweep {
+  from { transform: scaleX(0); }
+  60%  { transform: scaleX(1); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes draft-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes draft-rule-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .draft-name {
+    animation: draft-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+  }
+
+  .draft-rule {
+    transform-origin: left center;
+    animation:
+      draft-sweep 1100ms cubic-bezier(0.16, 1, 0.3, 1) both,
+      draft-rule-out 420ms ease-out 1080ms both;
+  }
+
+  .draft-role {
+    animation: draft-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) 720ms both;
+  }
+}
+
+/**
+ * The section rule
+ *
+ * It was the loudest element on the page and carried no information. Drawing
+ * it as the section arrives makes it part of the drafting rather than
+ * decoration laid over it.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .draw-lines .section-rule {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 1200ms cubic-bezier(0.16, 1, 0.3, 1) 260ms;
+  }
+
+  .draw-lines.is-drawn .section-rule {
+    transform: scaleX(1);
+  }
+}
+
+/**
+ * Section reveal
+ *
+ * Content is uncovered by a mask travelling along the grid axis rather than
+ * faded, which is the same gesture as the rules drawing themselves in.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .draw-lines .sweep {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+  }
+
+  .draw-lines.is-drawn .sweep {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/**
+ * Status
+ *
+ * Only a shipped claim pulses. It reads as something being sampled rather than
+ * typed, which is the same argument the rest of the page makes.
+ */
+@keyframes status-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .status-live {
+    animation: status-live 2600ms ease-in-out infinite;
+  }
+}
+
+/**
+ * Entry hover
+ *
+ * --line-color inherits, so brightening it on the row lifts every rule the row
+ * owns at once rather than tinting one link.
+ */
+/* A custom property only animates once it is registered with a type. */
+@property --line-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+.entry,
+.entry .dotted-line {
+  transition: --line-color 300ms ease-out;
+}
+
+/*
+ * .dotted-line sets --line-color on itself, so the value inherited from the
+ * row never reaches nested rules and the verticals stay grey. Descendants are
+ * targeted explicitly to outrank that local declaration.
+ */
+.entry:hover,
+.entry:hover .dotted-line {
+  --line-color: color-mix(in srgb, var(--accent) 60%, transparent);
 }
 
 /**

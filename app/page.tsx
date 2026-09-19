@@ -30,7 +30,7 @@ export default function Home() {
         <SectionContainer id="introduction">
           <SectionHeader title="Introduction" />
           <ContentRow>
-            <p className="text-sm leading-6 text-balance">
+            <p className="max-w-[66ch] text-sm leading-6 text-pretty">
               {profileData.introduction}
             </p>
           </ContentRow>

@@ -24,7 +24,7 @@ export function ProjectEntry({
   detail,
 }: ProjectEntryProps) {
   return (
-    <div className="flex flex-col md:flex-row gap-4 md:gap-8 dotted-line dotted-line-horizontal relative">
+    <div className="entry flex flex-col md:flex-row gap-4 md:gap-8 dotted-line dotted-line-horizontal relative">
       <div className="dotted-line dotted-line-vertical relative">
         <ProjectDetails category={category} />
       </div>

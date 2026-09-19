@@ -23,12 +23,12 @@ export function SectionHeader({ title }: SectionHeaderProps) {
       </div>
       <div className="flex w-full gap-8 items-center">
         <div className="flex h-full items-center dotted-line dotted-line-vertical relative">
-          <h2 className="text-xl whitespace-nowrap font-bold font-heading uppercase">
+          <h2 className="sweep text-xl whitespace-nowrap font-bold font-heading uppercase">
             {title}
           </h2>
         </div>
         <div className="flex w-full h-full items-center dotted-line dotted-line-vertical relative">
-          <div className="flex h-px bg-foreground w-full"></div>
+          <div className="section-rule flex h-px bg-foreground w-full"></div>
         </div>
       </div>
     </div>
