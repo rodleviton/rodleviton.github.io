@@ -26,7 +26,7 @@ export default function Home() {
         locationHref={profileData.location.mapUrl}
         location={profileData.location.text}
       />
-      <main className="flex-1">
+      <main className="relative z-10 flex-1">
         <SectionContainer id="introduction">
           <SectionHeader title="Introduction" />
           <ContentRow>

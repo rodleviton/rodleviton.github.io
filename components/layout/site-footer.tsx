@@ -41,7 +41,7 @@ export function SiteFooter() {
   }, []);
 
   return (
-    <footer className="container py-8">
+    <footer className="relative z-10 container py-8">
       <div className="flex flex-col gap-3 pt-6 sm:flex-row sm:items-center sm:justify-between dotted-line dotted-line-horizontal relative">
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-2">

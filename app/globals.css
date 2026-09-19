@@ -180,6 +180,146 @@
 }
 
 /**
+ * The drafting field
+ *
+ * The full grid the page's rules only imply, laid underneath everything and
+ * revealed in a radius around the pointer. Two densities: a fine dot field and
+ * a heavier rule every eighth cell, the way a drawing sheet is printed.
+ */
+.blueprint-field {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 600ms ease-out;
+
+  --cell: 22px;
+  --major: 176px;
+  --reveal: 320px;
+
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--accent) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--accent) 55%, transparent) 1px, transparent 1px),
+    radial-gradient(color-mix(in srgb, var(--foreground) 38%, transparent) 1px, transparent 1px);
+  background-size:
+    var(--major) var(--major),
+    var(--major) var(--major),
+    var(--cell) var(--cell);
+
+  mask-image: radial-gradient(
+    circle var(--reveal) at var(--x, -9999px) var(--y, -9999px),
+    black 0%,
+    color-mix(in srgb, black 45%, transparent) 42%,
+    transparent 72%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--reveal) at var(--x, -9999px) var(--y, -9999px),
+    black 0%,
+    color-mix(in srgb, black 45%, transparent) 42%,
+    transparent 72%
+  );
+}
+
+.blueprint-field[style*="--on"] {
+  opacity: 1;
+}
+
+/**
+ * Masthead
+ *
+ * The name is not faded in, it is drawn: a crimson rule sweeps across and the
+ * letterforms are uncovered behind it, once, on load.
+ */
+@keyframes draft-sweep {
+  from { transform: scaleX(0); }
+  60%  { transform: scaleX(1); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes draft-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes draft-rule-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .draft-name {
+    animation: draft-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+  }
+
+  .draft-rule {
+    transform-origin: left center;
+    animation:
+      draft-sweep 1100ms cubic-bezier(0.16, 1, 0.3, 1) both,
+      draft-rule-out 420ms ease-out 1080ms both;
+  }
+
+  .draft-role {
+    animation: draft-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) 720ms both;
+  }
+}
+
+/**
+ * Section reveal
+ *
+ * Content is uncovered by a mask travelling along the grid axis rather than
+ * faded, which is the same gesture as the rules drawing themselves in.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .draw-lines .sweep {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1100ms cubic-bezier(0.16, 1, 0.3, 1) 120ms;
+  }
+
+  .draw-lines.is-drawn .sweep {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/**
+ * Status
+ *
+ * Only a shipped claim pulses. It reads as something being sampled rather than
+ * typed, which is the same argument the rest of the page makes.
+ */
+@keyframes status-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .status-live {
+    animation: status-live 2600ms ease-in-out infinite;
+  }
+}
+
+/**
+ * Entry hover
+ *
+ * --line-color inherits, so brightening it on the row lifts every rule the row
+ * owns at once rather than tinting one link.
+ */
+/* A custom property only animates once it is registered with a type. */
+@property --line-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+.entry {
+  transition: --line-color 300ms ease-out;
+}
+
+.entry:hover {
+  --line-color: color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+/**
  * Drafting animation
  *
  * A section marked `.draw-lines` holds its blueprint rules at zero length until
