@@ -1,4 +1,3 @@
-import { recast } from "@rpxl/recast";
 import React, { forwardRef } from "react";
 
 type Props = React.SVGProps<SVGSVGElement>;
@@ -54,4 +53,4 @@ const Component = forwardRef<SVGSVGElement, Props>(
 
 Component.displayName = "Github";
 
-export const Github = recast(Component, {});
+export const Github = Component;

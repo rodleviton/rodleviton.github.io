@@ -27,7 +27,7 @@ export default function Home() {
         location={profileData.location.text}
       />
       <main className="flex-1">
-        <SectionContainer>
+        <SectionContainer id="introduction">
           <SectionHeader title="Introduction" />
           <ContentRow>
             <p className="text-sm leading-6 text-balance">
@@ -39,12 +39,12 @@ export default function Home() {
 
           <TechStackGrid technologies={technologiesData} />
         </SectionContainer>
-        <SectionContainer>
+        <SectionContainer id="experience">
           <SectionHeader title="Experience Summary" />
 
-          {experienceData.map((experience, index) => (
+          {experienceData.map((experience) => (
             <ExperienceEntry
-              key={index}
+              key={experience.company}
               role={experience.role}
               dates={experience.dates}
               company={experience.company}
@@ -56,27 +56,29 @@ export default function Home() {
           ))}
         </SectionContainer>
 
-        <SectionContainer>
-          <SectionHeader title="Open Source Projects" />
+        <SectionContainer id="work">
+          <SectionHeader title="Selected Work" />
 
-          {projectsData.map((project, index) => (
+          {projectsData.map((project) => (
             <ProjectEntry
-              key={index}
-              platform={project.platform}
+              key={project.name}
+              category={project.category}
               name={project.name}
-              repository={project.repository}
+              url={project.url}
               logo={project.logo}
               description={project.description}
+              status={project.status}
+              detail={project.detail}
             />
           ))}
         </SectionContainer>
 
-        <SectionContainer>
+        <SectionContainer id="presence">
           <SectionHeader title="Online Presence" />
 
-          {socialData.map((social, index) => (
+          {socialData.map((social) => (
             <SocialEntry
-              key={index}
+              key={social.platform}
               platform={social.platform}
               profileUrl={social.profileUrl}
               logo={social.logo}

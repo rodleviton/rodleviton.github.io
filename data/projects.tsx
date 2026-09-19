@@ -1,40 +1,73 @@
-import { Github } from "@/components/logos/github";
+import { Eko } from "@/components/logos/eko";
+import { GrooveUnit } from "@/components/logos/groove-unit";
+import { InSitue } from "@/components/logos/insitue";
+import { MiniMecha } from "@/components/logos/mini-mecha";
 import { Recast } from "@/components/logos/recast";
-import { SwankyDocs } from "@/components/logos/swanky-docs";
-import { VueCardStack } from "@/components/logos/vue-card-stack";
 import { ReactNode } from "react";
 
 export interface ProjectItem {
-  platform: string;
+  /** What kind of thing this is. Rendered in the left gutter. */
+  category: string;
   name: string;
-  repository: string;
+  /** Where it lives. Shown under the name and used as the link target. */
+  url: string;
   logo?: ReactNode;
   description: string;
+  /** Measured state, not a self-assessment. Kept short enough to sit on one line. */
+  status: string;
+  /** Supporting evidence for the status. */
+  detail: string;
 }
 
 export const projectsData: ProjectItem[] = [
   {
-    platform: "GitHub",
+    category: "Product",
+    name: "Mini Mecha",
+    url: "https://www.minimecha.com",
+    logo: <MiniMecha />,
+    description:
+      "Numbered, finite resin garage kits. Operators vote concepts into production, reserve numbered blocks from a live drop, and post their finished builds. I designed the product, built the platform, and run it.",
+    status: "Shipped",
+    detail: "Next.js, Supabase, Stripe, bespoke CMS",
+  },
+  {
+    category: "Developer tool",
+    name: "InSitue",
+    url: "https://www.insitue.com",
+    logo: <InSitue />,
+    description:
+      "Click an element in a running web app to file a change request, and an agent opens a verified draft pull request against the exact source line. Open-source SDK and editor plugin, paid cloud service on top.",
+    status: "Shipped",
+    detail: "Four npm packages, Stripe billing",
+  },
+  {
+    category: "Mac app",
+    name: "EKO",
+    url: "https://www.reactivepixels.com/eko",
+    logo: <Eko />,
+    description:
+      "A native Mac client for self-hosted music. The signal path is bit-perfect where it can be, and the interface says so. The moment volume, EQ or sample rate breaks that, the seal downgrades itself rather than keep the claim.",
+    status: "Released, pre-1.0",
+    detail: "Tauri, Rust audio engine, notarised",
+  },
+  {
+    category: "Game",
+    name: "Groove Unit",
+    url: "https://www.reactivepixels.com/grooveunit",
+    logo: <GrooveUnit />,
+    description:
+      "A desk companion that dances in time to whatever you are actually playing, using onset detection over system audio. Godot and Rust, with the DSP written by hand rather than pulled from a library.",
+    status: "Engine complete, unreleased",
+    detail: "1,002 sprites, 358 tests, no store page",
+  },
+  {
+    category: "Library",
     name: "Recast",
-    repository: "https://github.com/reactivepixels/recast",
+    url: "https://github.com/reactivepixels/recast",
     logo: <Recast />,
     description:
-      "Recast is a collection of small React utilities; it is also an approach to building truly reusable component primitives by abstracting the theme layer from the internal workings of a component.",
-  },
-  {
-    platform: "GitHub",
-    name: "Vue Card Stack",
-    repository: "https://github.com/rodleviton/vue-card-stack",
-    logo: <VueCardStack />,
-    description:
-      "A swipeable card component library built for VueJs. Particular attention has been placed on creating a buttery smooth and performant card swipe interaction and thorough api documentation for consumers.",
-  },
-  {
-    platform: "GitHub",
-    name: "Swanky Docs",
-    repository: "https://github.com/swanky-docs",
-    logo: <SwankyDocs />,
-    description:
-      "Swanky Docs is a configuration based documentation generator that is optimized for creating pattern libraries.",
+      "An approach to building genuinely reusable React primitives by lifting the theme layer out of a component's internals. Build the component once, skin it per project.",
+    status: "Maintained",
+    detail: "npm @rpxl/recast, v5",
   },
 ];
