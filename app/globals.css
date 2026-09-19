@@ -265,11 +265,18 @@
   initial-value: transparent;
 }
 
-.entry {
+.entry,
+.entry .dotted-line {
   transition: --line-color 300ms ease-out;
 }
 
-.entry:hover {
+/*
+ * .dotted-line sets --line-color on itself, so the value inherited from the
+ * row never reaches nested rules and the verticals stay grey. Descendants are
+ * targeted explicitly to outrank that local declaration.
+ */
+.entry:hover,
+.entry:hover .dotted-line {
   --line-color: color-mix(in srgb, var(--accent) 60%, transparent);
 }
 
