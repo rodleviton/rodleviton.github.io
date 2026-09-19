@@ -3,6 +3,7 @@ import { sans, heading } from "@/lib/fonts";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { CommandTerminal } from "@/components/terminal/command-terminal";
 
 const description =
   "Front-end architect in the Blue Mountains, Australia. Twenty years building interfaces, design systems and products.";
@@ -55,6 +56,7 @@ export default function RootLayout({
         >
           {children}
           <SiteFooter />
+          <CommandTerminal />
         </ThemeProvider>
       </body>
     </html>

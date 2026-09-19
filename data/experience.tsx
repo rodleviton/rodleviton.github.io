@@ -1,6 +1,6 @@
 import { Bookwell } from "@/components/logos/bookwell";
+import { Gyro } from "@/components/logos/gyro";
 import { CultureAmp } from "@/components/logos/culture-amp";
-import { HorizonState } from "@/components/logos/horizon-state";
 import { Mogul } from "@/components/logos/mogul";
 import { OSQO } from "@/components/logos/osqo";
 import { PresperLabs } from "@/components/logos/presper-labs";
@@ -23,6 +23,7 @@ export const experienceData: ExperienceItem[] = [
     dates: "Jul 2025 - Current",
     company: "GYRO",
     website: "https://www.gyro.music/",
+    logo: <Gyro />,
     description:
       "GYRO is an independent, Australian-owned music distribution platform that places artists on over 100 streaming services while they keep 92% of their royalties. I own every user-facing surface: the customer dashboard, the admin dashboard, and the marketing work around them.",
     bulletPoints: [
@@ -105,20 +106,6 @@ export const experienceData: ExperienceItem[] = [
       "Integrated new translation strings across all sections of the platform.",
       "Coordinated with the translation team to ensure content accuracy.",
       "Mentored and provided guidance to junior developers in the team.",
-    ],
-  },
-  {
-    role: "Lead Front-end Developer",
-    dates: "April 2018 - Sep 2018",
-    company: "Horizon State",
-    website: "https://horizonstate.com/",
-    logo: <HorizonState />,
-    description:
-      "For this blockchain voting technology platform, my work was to develop specialised front-end applications and create a reusable, cross-platform UI library.",
-    bulletPoints: [
-      "Built a modular UI library with React Native Web for seamless reuse across native and web platforms.",
-      "Rapidly prototyped concepts using Invision to expedite the design and development process.",
-      "Coordinated efforts between local and remote developers to ensure effective collaboration.",
     ],
   },
 ];

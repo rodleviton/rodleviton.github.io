@@ -9,11 +9,14 @@ import { cn } from "@/lib/utils";
 interface SectionContainerProps {
   children: ReactNode;
   className?: string;
+  /** Anchor for the command prompt's `goto`. */
+  id?: string;
 }
 
 export function SectionContainer({
   children,
   className = "",
+  id,
 }: SectionContainerProps) {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, {
@@ -31,6 +34,7 @@ export function SectionContainer({
   return (
     <SectionVisibilityProvider isInView={isInView}>
       <section
+        id={id}
         ref={ref}
         className={cn(
           "container py-8 flex flex-col gap-6 md:gap-12 relative draw-lines",

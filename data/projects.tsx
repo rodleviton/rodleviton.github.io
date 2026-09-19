@@ -1,5 +1,7 @@
+import { Eko } from "@/components/logos/eko";
+import { InSitue } from "@/components/logos/insitue";
+import { MiniMecha } from "@/components/logos/mini-mecha";
 import { Recast } from "@/components/logos/recast";
-import { VueCardStack } from "@/components/logos/vue-card-stack";
 import { ReactNode } from "react";
 
 export interface ProjectItem {
@@ -21,6 +23,7 @@ export const projectsData: ProjectItem[] = [
     category: "Product",
     name: "Mini Mecha",
     url: "https://www.minimecha.com",
+    logo: <MiniMecha />,
     description:
       "Numbered, finite resin garage kits. Operators vote concepts into production, reserve numbered blocks from a live drop, and post their finished builds. I designed the product, built the platform, and run it.",
     status: "Shipped",
@@ -30,6 +33,7 @@ export const projectsData: ProjectItem[] = [
     category: "Developer tool",
     name: "InSitue",
     url: "https://www.insitue.com",
+    logo: <InSitue />,
     description:
       "Click an element in a running web app to file a change request, and an agent opens a verified draft pull request against the exact source line. Open-source SDK and editor plugin, paid cloud service on top.",
     status: "Shipped",
@@ -39,6 +43,7 @@ export const projectsData: ProjectItem[] = [
     category: "Mac app",
     name: "EKO",
     url: "https://www.reactivepixels.com/eko",
+    logo: <Eko />,
     description:
       "A native Mac client for self-hosted music. The signal path is bit-perfect where it can be, and the interface says so. The moment volume, EQ or sample rate breaks that, the seal downgrades itself rather than keep the claim.",
     status: "Released, pre-1.0",
@@ -62,15 +67,5 @@ export const projectsData: ProjectItem[] = [
       "An approach to building genuinely reusable React primitives by lifting the theme layer out of a component's internals. Build the component once, skin it per project.",
     status: "Maintained",
     detail: "npm @rpxl/recast, v5",
-  },
-  {
-    category: "Library",
-    name: "Vue Card Stack",
-    url: "https://github.com/rodleviton/vue-card-stack",
-    logo: <VueCardStack />,
-    description:
-      "A swipeable card stack for Vue, built around getting the feel of the drag and the release right. Published in 2020 and no longer maintained.",
-    status: "Unmaintained since 2020",
-    detail: "npm vue-card-stack, 81 stars",
   },
 ];

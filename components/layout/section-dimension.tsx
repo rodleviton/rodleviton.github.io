@@ -34,6 +34,7 @@ export function SectionDimension({ target }: SectionDimensionProps) {
   return (
     <div
       aria-hidden="true"
+      data-section-dimension=""
       className={`pointer-events-none absolute left-0 top-8 bottom-8 hidden w-5 select-none md:block transition-opacity duration-700 ${
         isInView ? "opacity-100" : "opacity-0"
       }`}

@@ -27,7 +27,7 @@ export default function Home() {
         location={profileData.location.text}
       />
       <main className="flex-1">
-        <SectionContainer>
+        <SectionContainer id="introduction">
           <SectionHeader title="Introduction" />
           <ContentRow>
             <p className="text-sm leading-6 text-balance">
@@ -39,7 +39,7 @@ export default function Home() {
 
           <TechStackGrid technologies={technologiesData} />
         </SectionContainer>
-        <SectionContainer>
+        <SectionContainer id="experience">
           <SectionHeader title="Experience Summary" />
 
           {experienceData.map((experience) => (
@@ -56,7 +56,7 @@ export default function Home() {
           ))}
         </SectionContainer>
 
-        <SectionContainer>
+        <SectionContainer id="work">
           <SectionHeader title="Selected Work" />
 
           {projectsData.map((project) => (
@@ -73,7 +73,7 @@ export default function Home() {
           ))}
         </SectionContainer>
 
-        <SectionContainer>
+        <SectionContainer id="presence">
           <SectionHeader title="Online Presence" />
 
           {socialData.map((social) => (
