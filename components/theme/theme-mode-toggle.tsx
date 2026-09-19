@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
@@ -9,11 +8,8 @@ import { Button } from "@/components/ui/button";
 export function ThemeModeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
 
-  // The resolved theme is unknown until the client has mounted, so the label
-  // stays generic until then. The icons are driven by CSS and need no guard.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
+  // resolvedTheme is undefined until the client has hydrated, which is its own
+  // guard: the label stays generic until then. The icons are driven by CSS.
   const next = resolvedTheme === "dark" ? "light" : "dark";
 
   return (
@@ -23,7 +19,9 @@ export function ThemeModeToggle() {
           variant="outline"
           size="icon"
           onClick={() => setTheme(next)}
-          aria-label={mounted ? `Switch to ${next} theme` : "Toggle theme"}
+          aria-label={
+            resolvedTheme ? `Switch to ${next} theme` : "Toggle theme"
+          }
           className="hover:cursor-pointer group"
         >
           <Sun className="group-hover:text-accent h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useRef } from "react";
 import { useInView } from "motion/react";
 import { SectionVisibilityProvider } from "@/contexts/section-visibility-context";
 import { cn } from "@/lib/utils";
@@ -25,10 +25,11 @@ export function SectionContainer({
 
   // The blueprint is drawn once and stays drawn; retracting it on scroll-away
   // would read as a glitch rather than as drafting.
-  const [hasBeenDrawn, setHasBeenDrawn] = useState(false);
-  useEffect(() => {
-    if (isInView) setHasBeenDrawn(true);
-  }, [isInView]);
+  const hasBeenDrawn = useInView(ref, {
+    margin: "0px 0px -100px 0px",
+    amount: 0.2,
+    once: true,
+  });
 
   return (
     <SectionVisibilityProvider isInView={isInView}>
