@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { CommandTerminal } from "@/components/terminal/command-terminal";
-import { BlueprintField } from "@/components/effects/blueprint-field";
 
 const description =
   "Front-end architect in the Blue Mountains, Australia. Twenty years building interfaces, design systems and products.";
@@ -55,7 +54,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <BlueprintField />
           {children}
           <SiteFooter />
           <CommandTerminal />
