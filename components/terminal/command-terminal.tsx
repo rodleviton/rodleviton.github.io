@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import { runCommand, type CommandContext } from "./commands";
+import { OPEN_PROMPT, isKeyboardClaimed } from "@/lib/events";
 
 interface Line {
   id: number;
@@ -10,10 +11,10 @@ interface Line {
   text: string;
 }
 
-const PROMPT = "rodleviton ~ %";
+const PROMPT = "C:\\ROD>";
 
 /** Lets the footer affordance open the prompt without lifting state. */
-export const OPEN_EVENT = "rodleviton:open-command-terminal";
+export const OPEN_EVENT = OPEN_PROMPT;
 
 export function CommandTerminal() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -48,6 +49,7 @@ export function CommandTerminal() {
     const onKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
         event.preventDefault();
+        if (!isOpen && isKeyboardClaimed()) return;
         setIsOpen((open) => {
           if (!open) restoreFocusTo.current = document.activeElement;
           return !open;
@@ -61,6 +63,7 @@ export function CommandTerminal() {
     };
 
     const onRequestOpen = () => {
+      if ("boot" in document.documentElement.dataset) return;
       restoreFocusTo.current = document.activeElement;
       setIsOpen(true);
     };
@@ -72,6 +75,16 @@ export function CommandTerminal() {
       window.removeEventListener(OPEN_EVENT, onRequestOpen);
     };
   }, [isOpen, close]);
+
+  // While open the prompt owns the keyboard, so the page's own keys stand down.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isOpen) root.dataset.prompt = "";
+    else delete root.dataset.prompt;
+    return () => {
+      delete root.dataset.prompt;
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -133,50 +146,28 @@ export function CommandTerminal() {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-background/70 px-4 pt-[12vh] backdrop-blur-sm"
+      className="prompt-scrim"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) close();
       }}
     >
-      <div
-        role="dialog"
-        aria-modal="true"
-        aria-label="Command prompt"
-        className="w-full max-w-2xl border border-border bg-background shadow-2xl"
-      >
-        <div className="flex items-center justify-between border-b border-border px-4 py-2">
-          <span className="text-2xs font-heading uppercase tracking-widest text-foreground-muted">
-            Command prompt
-          </span>
-          <span className="text-2xs font-heading uppercase tracking-widest text-foreground-muted">
-            Esc to close
-          </span>
+      <div role="dialog" aria-modal="true" aria-label="Command prompt" className="prompt">
+        <div className="prompt-title">
+          <span>{PROMPT} prompt</span>
+          <span>Esc closes</span>
         </div>
 
-        <div
-          ref={outputRef}
-          className="max-h-[42vh] overflow-y-auto px-4 py-3 font-mono text-xs leading-6"
-        >
+        <div ref={outputRef} className="prompt-out">
           {lines.map((line) => (
-            <div
-              key={line.id}
-              className={
-                line.kind === "input" ? "text-foreground" : "text-foreground-muted"
-              }
-            >
-              {line.kind === "input" && (
-                <span className="text-accent">{PROMPT} </span>
-              )}
-              <span className="whitespace-pre-wrap">{line.text}</span>
+            <div key={line.id} className={line.kind === "input" ? "prompt-in" : undefined}>
+              {line.kind === "input" && <span className="prompt-sign">{PROMPT} </span>}
+              <span>{line.text}</span>
             </div>
           ))}
         </div>
 
-        <form
-          onSubmit={submit}
-          className="flex items-center gap-2 border-t border-border px-4 py-3 font-mono text-xs"
-        >
-          <label htmlFor="command-input" className="text-accent">
+        <form onSubmit={submit} className="prompt-form">
+          <label htmlFor="command-input" className="prompt-sign">
             {PROMPT}
           </label>
           <input
@@ -187,7 +178,6 @@ export function CommandTerminal() {
             onKeyDown={onInputKeyDown}
             autoComplete="off"
             spellCheck={false}
-            className="flex-1 bg-transparent text-foreground outline-none placeholder:text-foreground-muted"
             placeholder="help"
           />
         </form>

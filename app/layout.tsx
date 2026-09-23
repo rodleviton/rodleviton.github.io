@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { sans, heading } from "@/lib/fonts";
+import { mono } from "@/lib/fonts";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { CommandTerminal } from "@/components/terminal/command-terminal";
+import { BOOT_DECISION, BootScreen } from "@/components/bios/boot-screen";
+import { Crt } from "@/components/bios/crt";
+import { KeyBar } from "@/components/bios/key-bar";
+import { SaveExitDialog } from "@/components/bios/save-exit-dialog";
+import { Screensaver } from "@/components/bios/screensaver";
+import { SetupKeys } from "@/components/bios/setup-keys";
+import { TitleBar } from "@/components/bios/title-bar";
 
 const description =
   "Front-end architect in the Blue Mountains, Australia. Twenty years building interfaces, design systems and products.";
@@ -36,27 +42,45 @@ export const metadata: Metadata = {
   },
 };
 
+/** Server renders it as a script; the client renders inert text, and the DOM wins. */
+function InlineScript({ html }: { html: string }) {
+  return (
+    <script
+      type={typeof window === "undefined" ? "text/javascript" : "text/plain"}
+      suppressHydrationWarning
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en-AU"
-      className={`dark ${sans.variable} ${heading.variable}`}
-      suppressHydrationWarning
-    >
-      <body className="flex min-h-screen flex-col">
+    <html lang="en-AU" className={mono.variable} suppressHydrationWarning>
+      <head>
+        <InlineScript html={BOOT_DECISION} />
+      </head>
+      <body>
         <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          attribute="data-theme"
+          themes={["crt", "setup"]}
+          defaultTheme="crt"
+          enableSystem={false}
+          storageKey="bios-theme"
           disableTransitionOnChange
         >
+          <TitleBar />
           {children}
-          <SiteFooter />
+          <KeyBar />
           <CommandTerminal />
+          <SaveExitDialog />
+          <Screensaver />
+          <SetupKeys />
+          <BootScreen />
+          <Crt />
         </ThemeProvider>
       </body>
     </html>

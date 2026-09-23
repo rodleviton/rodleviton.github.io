@@ -1,5 +1,7 @@
 import { projectsData } from "@/data/projects";
 import { experienceData } from "@/data/experience";
+import { RUN_BOOT } from "@/lib/events";
+import { isSoundEnabled, setSoundEnabled } from "@/lib/speaker";
 
 export interface CommandContext {
   setTheme: (theme: string) => void;
@@ -14,28 +16,6 @@ export interface Command {
   usage: string;
   summary: string;
   run: (args: string[], context: CommandContext) => void;
-}
-
-/** Toggles a flag class on the document root and reports the resulting state. */
-function toggleRootClass(
-  offClass: string,
-  args: string[],
-  label: string,
-  context: CommandContext
-) {
-  const root = document.documentElement;
-  const requested = args[0];
-  const isOff = root.classList.contains(offClass);
-
-  const shouldBeOn =
-    requested === "on"
-      ? true
-      : requested === "off"
-        ? false
-        : isOff; // no argument: flip
-
-  root.classList.toggle(offClass, !shouldBeOn);
-  context.print([`${label} ${shouldBeOn ? "on" : "off"}`]);
 }
 
 const SECTIONS = ["introduction", "experience", "work", "presence"];
@@ -56,27 +36,14 @@ export const commands: Command[] = [
     },
   },
   {
-    name: "grid",
-    usage: "grid [on|off]",
-    summary: "Show or hide the blueprint rules.",
-    run: (args, context) => toggleRootClass("no-grid", args, "Grid", context),
-  },
-  {
     name: "theme",
-    usage: "theme [dark|light|system]",
-    summary: "Switch the colour scheme.",
+    usage: "theme [crt|setup]",
+    summary: "Switch between the CRT and the blue setup screen.",
     run: (args, context) => {
-      const requested = args[0];
+      const requested = args[0] ?? (context.resolvedTheme === "setup" ? "crt" : "setup");
 
-      if (!requested) {
-        const next = context.resolvedTheme === "dark" ? "light" : "dark";
-        context.setTheme(next);
-        context.print([`Theme ${next}`]);
-        return;
-      }
-
-      if (!["dark", "light", "system"].includes(requested)) {
-        context.print([`theme: no such mode "${requested}". Try dark, light or system.`]);
+      if (!["crt", "setup"].includes(requested)) {
+        context.print([`theme: no such mode "${requested}". Try crt or setup.`]);
         return;
       }
 
@@ -112,7 +79,6 @@ export const commands: Command[] = [
     usage: "status",
     summary: "Print what this page actually knows about itself.",
     run: (_args, context) => {
-      const root = document.documentElement;
       const shipped = projectsData.filter((project) =>
         project.status.toLowerCase().startsWith("shipped")
       ).length;
@@ -121,10 +87,30 @@ export const commands: Command[] = [
         `build        ${process.env.NEXT_PUBLIC_BUILD_SHA}`,
         `viewport     ${window.innerWidth} x ${window.innerHeight}`,
         `theme        ${context.resolvedTheme ?? "unknown"}`,
-        `grid         ${root.classList.contains("no-grid") ? "off" : "on"}`,
+        `sound        ${isSoundEnabled() ? "on" : "off"}`,
         `roles        ${experienceData.length}`,
         `projects     ${projectsData.length} listed, ${shipped} shipped`,
       ]);
+    },
+  },
+  {
+    name: "boot",
+    usage: "boot",
+    summary: "Run the power-on self test again.",
+    run: (_args, context) => {
+      context.close();
+      window.scrollTo(0, 0);
+      window.dispatchEvent(new Event(RUN_BOOT));
+    },
+  },
+  {
+    name: "sound",
+    usage: "sound [on|off]",
+    summary: "The PC speaker. Off unless you ask.",
+    run: (args, context) => {
+      const next = args[0] ? args[0] === "on" : !isSoundEnabled();
+      setSoundEnabled(next);
+      context.print([`Sound ${next ? "on" : "off"}`]);
     },
   },
   {
@@ -148,7 +134,7 @@ export function runCommand(input: string, context: CommandContext) {
   const command = commands.find((candidate) => candidate.name === name);
 
   if (!command) {
-    context.print([`${name}: not a command. Type help.`]);
+    context.print([`${name}: bad command or file name. Type help.`]);
     return;
   }
 

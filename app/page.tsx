@@ -1,91 +1,187 @@
-import { ProfileHeader } from "@/components/profile/profile-header";
-import { SectionHeader } from "@/components/sections/section-header";
-import { SkillsGrid } from "@/components/skills/skills-grid";
-import { TechStackGrid } from "@/components/technology/tech-stack-grid";
-import { ExperienceEntry } from "@/components/experience/experience-entry";
-import { SectionContainer } from "@/components/layout/section-container";
-import { ContentRow } from "@/components/layout/content-row";
+import Image from "next/image";
 import { profileData } from "@/data/profile";
 import { skillsData } from "@/data/skills";
-import { technologiesData } from "@/data/technologies";
 import { experienceData } from "@/data/experience";
-import { ProjectEntry } from "@/components/projects/project-entry";
 import { projectsData } from "@/data/projects";
-import { SocialEntry } from "@/components/social/social-entry";
 import { socialData } from "@/data/social";
-import { SkillHoverProvider } from "@/contexts/skill-hover-context";
+import { SetupItem } from "@/components/bios/setup-item";
+import { SystemTime } from "@/components/bios/system-time";
+import { HealthStatus } from "@/components/bios/health-status";
+import { displayHost, statusTone } from "@/lib/status";
+
+const SLOTS = ["Primary Master  ", "Primary Slave   ", "Secondary Master", "Secondary Slave "];
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2>
+      <span className="k" aria-hidden="true">
+        &#9658;
+      </span>
+      {children}
+    </h2>
+  );
+}
 
 export default function Home() {
+  const current = experienceData[0];
+
   return (
-    <SkillHoverProvider>
-      <ProfileHeader
-        name={profileData.name}
-        title={profileData.title}
-        imageSrc={profileData.image.src}
-        imageAlt={profileData.image.alt}
-        locationHref={profileData.location.mapUrl}
-        location={profileData.location.text}
-      />
-      <main className="flex-1">
-        <SectionContainer id="introduction">
-          <SectionHeader title="Introduction" />
-          <ContentRow>
-            <p className="max-w-[66ch] text-sm leading-6 text-pretty">
-              {profileData.introduction}
-            </p>
-          </ContentRow>
+    <main className="wrap">
+      <section id="introduction" aria-labelledby="introduction-title">
+        <SectionTitle>
+          <span id="introduction-title">Main</span>
+        </SectionTitle>
+        <div className="main">
+          <div>
+            <div className="who">
+              <Image src="/images/portrait.png" alt="Pixel art portrait of Rod Leviton" width={144} height={144} priority />
+              <div>
+                <h1>{profileData.name}</h1>
+                <p>{profileData.title}</p>
+              </div>
+            </div>
+            <dl className="kv">
+              <div className="kv-row">
+                <dt>Name</dt>
+                <dd>{profileData.name}</dd>
+              </div>
+              <div className="kv-row">
+                <dt>Title</dt>
+                <dd>{profileData.title}</dd>
+              </div>
+              <div className="kv-row">
+                <dt>Location</dt>
+                <dd>
+                  <a href={profileData.location.mapUrl}>{profileData.location.text}</a>
+                </dd>
+              </div>
+              <div className="kv-row">
+                <dt>Current</dt>
+                <dd>
+                  {current.role}, {current.company}
+                </dd>
+              </div>
+              <div className="kv-row">
+                <dt>System time</dt>
+                <dd>
+                  <SystemTime />
+                </dd>
+              </div>
+            </dl>
+            <div className="detect">
+              {skillsData.map((skill, index) => (
+                <div key={skill.label}>
+                  Detecting {SLOTS[index] ?? "Device          "} ... <span className="r">{skill.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="help">
+            <h3>Item Specific Help</h3>
+            <p>{profileData.introduction}</p>
+            <HealthStatus />
+          </div>
+        </div>
+      </section>
 
-          <SkillsGrid skills={skillsData} />
-
-          <TechStackGrid technologies={technologiesData} />
-        </SectionContainer>
-        <SectionContainer id="experience">
-          <SectionHeader title="Experience Summary" />
-
-          {experienceData.map((experience) => (
-            <ExperienceEntry
-              key={experience.company}
-              role={experience.role}
-              dates={experience.dates}
-              company={experience.company}
-              website={experience.website}
-              logo={experience.logo}
-              description={experience.description}
-              bulletPoints={experience.bulletPoints}
-            />
+      <section id="experience" aria-labelledby="experience-title">
+        <SectionTitle>
+          <span id="experience-title">Experience Summary</span>
+        </SectionTitle>
+        <div className="list">
+          {experienceData.map((job, index) => (
+            <SetupItem
+              key={job.company}
+              defaultOpen={index === 0}
+              header={
+                <>
+                  <span className="d">{job.dates}</span>
+                  <span className="c">
+                    {job.logo && <span className="logo">{job.logo}</span>}
+                    {job.company}
+                  </span>
+                  <span className="x">{job.role}</span>
+                </>
+              }
+            >
+              <a className="site" href={job.website}>
+                {displayHost(job.website)}
+              </a>
+              <p>{job.description}</p>
+              <ul>
+                {job.bulletPoints.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+            </SetupItem>
           ))}
-        </SectionContainer>
+        </div>
+      </section>
 
-        <SectionContainer id="work">
-          <SectionHeader title="Selected Work" />
-
-          {projectsData.map((project) => (
-            <ProjectEntry
+      <section id="work" aria-labelledby="work-title">
+        <SectionTitle>
+          <span id="work-title">Selected Work: PCI Device Listing</span>
+        </SectionTitle>
+        <div className="list">
+          <div className="pci-head" aria-hidden="true">
+            <span />
+            <span>Bus Dev</span>
+            <span>Device</span>
+            <span>Class</span>
+            <span>Status</span>
+          </div>
+          {projectsData.map((project, index) => (
+            <SetupItem
               key={project.name}
-              category={project.category}
-              name={project.name}
-              url={project.url}
-              logo={project.logo}
-              description={project.description}
-              status={project.status}
-              detail={project.detail}
-            />
+              className="pci"
+              defaultOpen
+              header={
+                <>
+                  <span className="bus">
+                    00&nbsp;&nbsp;{String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="c">
+                    {project.logo && <span className="logo">{project.logo}</span>}
+                    {project.name}
+                  </span>
+                  <span>{project.category}</span>
+                  <span className={`st ${statusTone(project.status)}`}>[{project.status}]</span>
+                </>
+              }
+            >
+              <a className="site" href={project.url}>
+                {displayHost(project.url)}
+              </a>{" "}
+              <span className="dim">&middot; {project.detail}</span>
+              <p>{project.description}</p>
+            </SetupItem>
           ))}
-        </SectionContainer>
+        </div>
+      </section>
 
-        <SectionContainer id="presence">
-          <SectionHeader title="Online Presence" />
-
-          {socialData.map((social) => (
-            <SocialEntry
-              key={social.platform}
-              platform={social.platform}
-              profileUrl={social.profileUrl}
-              logo={social.logo}
-            />
+      <section id="presence" aria-labelledby="presence-title">
+        <SectionTitle>
+          <span id="presence-title">Presence: Serial Ports</span>
+        </SectionTitle>
+        <div className="list ports">
+          {socialData.map((social, index) => (
+            <div className="item" key={social.platform}>
+              <a className="item-row" href={social.profileUrl}>
+                <span className="marker">COM{index + 1}</span>
+                <span className="c">
+                  {social.logo && <span className="logo">{social.logo}</span>}
+                  {social.platform}
+                </span>
+                <span className="x">{displayHost(social.profileUrl)}</span>
+              </a>
+            </div>
           ))}
-        </SectionContainer>
-      </main>
-    </SkillHoverProvider>
+        </div>
+        <div className="end">
+          <p className="a">Press DEL to enter the prompt</p>
+          <p>1981-UI-DEV-RDLV-1985PX-00</p>
+        </div>
+      </section>
+    </main>
   );
 }
