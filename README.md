@@ -1,6 +1,6 @@
 # rodleviton.github.io
 
-Source for my personal site, live at [rodleviton.github.io](https://rodleviton.github.io).
+Source for my personal site, live at [rodleviton.com](https://www.rodleviton.com).
 
 A single static page: introduction, experience, selected work, and links. Built
 with Next.js and exported as static files, then published to GitHub Pages by a

@@ -15,18 +15,21 @@ const description =
   "Front-end architect in the Blue Mountains, Australia. Twenty years building interfaces, design systems and products.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://rodleviton.github.io"),
+  metadataBase: new URL("https://www.rodleviton.com"),
   title: {
     default: "Rod Leviton",
     template: "%s · Rod Leviton",
   },
   description,
-  authors: [{ name: "Rod Leviton", url: "https://rodleviton.github.io" }],
+  alternates: {
+    canonical: "/",
+  },
+  authors: [{ name: "Rod Leviton", url: "https://www.rodleviton.com" }],
   creator: "Rod Leviton",
   openGraph: {
     type: "website",
     locale: "en_AU",
-    url: "https://rodleviton.github.io",
+    url: "https://www.rodleviton.com",
     siteName: "Rod Leviton",
     title: "Rod Leviton",
     description,
