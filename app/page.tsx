@@ -34,7 +34,7 @@ export default function Home() {
         <div className="main">
           <div>
             <div className="who">
-              <Image src="/images/portrait.png" alt="Pixel art portrait of Rod Leviton" width={144} height={144} priority />
+              <Image src="/images/portrait.png" alt="Pixel art portrait of Rod Leviton" width={160} height={160} priority />
               <div>
                 <h1>{profileData.name}</h1>
                 <p>{profileData.title}</p>

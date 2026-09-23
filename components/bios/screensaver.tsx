@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { isKeyboardClaimed } from "@/lib/events";
 
 const IDLE_SECONDS = 60;
-const SIZE = 128;
+const SIZE = 160;
 const TINTS = ["none", "hue-rotate(90deg)", "hue-rotate(180deg)", "hue-rotate(270deg)", "saturate(2)"];
 
 /** After a minute idle, the portrait bounces around a black screen. Never for reduced motion. */
