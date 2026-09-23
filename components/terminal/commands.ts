@@ -134,7 +134,7 @@ export function runCommand(input: string, context: CommandContext) {
   const command = commands.find((candidate) => candidate.name === name);
 
   if (!command) {
-    context.print([`${name}: bad command or file name. Type help.`]);
+    context.print([`${name}: command not found. Type help.`]);
     return;
   }
 

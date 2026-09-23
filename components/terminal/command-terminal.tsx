@@ -11,7 +11,7 @@ interface Line {
   text: string;
 }
 
-const PROMPT = "C:\\ROD>";
+const PROMPT = "rodleviton ~ %";
 
 /** Lets the footer affordance open the prompt without lifting state. */
 export const OPEN_EVENT = OPEN_PROMPT;
@@ -153,7 +153,7 @@ export function CommandTerminal() {
     >
       <div role="dialog" aria-modal="true" aria-label="Command prompt" className="prompt">
         <div className="prompt-title">
-          <span>{PROMPT} prompt</span>
+          <span>Command prompt</span>
           <span>Esc closes</span>
         </div>
 
